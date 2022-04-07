@@ -1,6 +1,10 @@
 package com.algorithm;
 
 public class BubbleSort {
+    /**
+     *
+     * @param vet array su cui lavorare
+     */
     public static void calcola(int[] vet){
         for(int i = 0; i < vet.length; i++)
             for(int j = vet.length - 1; j > i; j--)

@@ -1,6 +1,10 @@
 package com.algorithm;
 
 public class InsertionSort {
+    /**
+     *
+     * @param vet array su cui lavorare
+     */
     public static void calcola(int [] vet){
         int cont = 0;
         int chiave, i;

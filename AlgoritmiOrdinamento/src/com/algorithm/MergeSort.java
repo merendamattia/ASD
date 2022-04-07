@@ -52,7 +52,7 @@ public class MergeSort {
             merge(vet, begin, mid, end);
         }
     }
-    
+
     /**
      * Nella prima chiamata bisogna fornire:
      * @param vet array di interi su cui lavorare
