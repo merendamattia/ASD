@@ -117,10 +117,10 @@ int main() {
 
     cout << "Array non ordinato: " << vet;
 
-    //insertionSort(vet);
+    insertionSort(vet);
     //mergeSort(vet, 0, DIM);
     //bubbleSort(vet);
-    quicksort(vet, 0, DIM - 1);
+    //quicksort(vet, 0, DIM - 1);
 
     cout << "Array ordinato: " << vet;
 
