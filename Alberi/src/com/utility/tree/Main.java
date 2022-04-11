@@ -8,16 +8,15 @@ public class Main {
 
         BinaryTree bt = new BinaryTree();
 //        bt.populateRandom();
-        bt.populateIncreasing();
+//        bt.populateIncreasing();
 //        bt.populateDecreasing();
+        bt.populateByUser();
 
         u.print("In Order");
         bt.printInOrder(bt.getRoot());
         Utility.endl();
 
-        ArrayList<Integer> vet = bt.toArray();
-        for (int i = 0; i < vet.size(); i++)
-            System.out.print(vet.get(i) + " ");
+        bt.printBFS();
 
     }
 }

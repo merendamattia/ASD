@@ -2,6 +2,8 @@
 package com.utility.tree;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 
 public class BinaryTree {
@@ -120,7 +122,35 @@ public class BinaryTree {
             System.out.print(node.value + " ");
         }
     }
+    /**
+     * Breadth-First Search
+     * Visits all the nodes of a level before going to the next level.
+     */
+    public void printBFS(){
+        if (root == null) return;
 
+        Queue<Node> nodes = new LinkedList<>();
+        nodes.add(root);
+
+        while (!nodes.isEmpty()) {
+            Node node = nodes.remove();
+
+            System.out.print(node.value + " ");
+
+            if (node.left != null)
+                nodes.add(node.left);
+
+            if (node.right != null)
+                nodes.add(node.right);
+        }
+    }
+
+    /**
+     * Dato un nodo, crea un array
+     * @param node root
+     * @param vet
+     * @return array
+     */
     private static ArrayList<Integer> getToArray(Node node, ArrayList<Integer> vet){
         if(node != null){
             vet = getToArray(node.left, vet);
