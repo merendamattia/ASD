@@ -189,5 +189,41 @@ public class BinaryTree {
         return getMax(root, root.value);
     }
 
+    /**
+     * Somma di tutti i valori dell'albero
+     * @param node root
+     * @return sum
+     */
+    private static int getSum(Node node){
+        if(node != null)
+            return node.value + getSum(node.left) + getSum(node.right);
+        else
+            return 0;
+    }
+    public static int sum(){
+        return getSum(root);
+    }
 
+    /**
+     * Ritorna il numero di quanti nodi sono presenti in un albero
+     * @param node
+     * @return
+     */
+    private static int getSize(Node node){
+        if(node != null)
+            return 1 + getSize(node.left) + getSize(node.right);
+        else
+            return 0;
+    }
+    public static int size(){
+        return getSize(root);
+    }
+
+    /**
+     * Ritorna la media dei valori di un albero
+     * @return
+     */
+    public static float average(){
+        return (float) sum() / size();
+    }
 }
