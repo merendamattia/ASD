@@ -1,6 +1,7 @@
 // Source: https://www.baeldung.com/java-binary-tree
 package com.utility.tree;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BinaryTree {
@@ -120,6 +121,20 @@ public class BinaryTree {
         }
     }
 
+    private static ArrayList<Integer> getToArray(Node node, ArrayList<Integer> vet){
+        if(node != null){
+            vet = getToArray(node.left, vet);
+            vet.add(node.value);
+            vet = getToArray(node.right, vet);
+        }
+
+        return vet;
+    }
+    public static ArrayList<Integer> toArray(){
+        ArrayList<Integer> vet = new ArrayList<Integer>(treeSize());
+        return getToArray(root, vet);
+    }
+
     // ------------------------ METHODS ------------------------
     /**
      * Verifica se un albero contiene un determinato valore
@@ -215,7 +230,7 @@ public class BinaryTree {
         else
             return 0;
     }
-    public static int size(){
+    public static int treeSize(){
         return getSize(root);
     }
 
@@ -224,6 +239,27 @@ public class BinaryTree {
      * @return
      */
     public static float average(){
-        return (float) sum() / size();
+        System.out.println(sum());
+        System.out.println(treeSize());
+        return (float) sum() / treeSize();
+    }
+
+    /**
+     * Verifica se due alberi sono uguali (nodi nella stessa posizione)
+     * @param other altro albero
+     * @return true se sono uguali, false altrimenti
+     */
+    public static boolean isEquals(BinaryTree other){
+        if(treeSize() != other.treeSize())
+            return false;
+
+        ArrayList<Integer> vet1 = toArray();
+        ArrayList<Integer> vet2 = other.toArray();
+
+        for(int i = 0; i < treeSize(); i++)
+            if(vet1.get(i) != vet2.get(i))
+                return false;
+
+        return true;
     }
 }
