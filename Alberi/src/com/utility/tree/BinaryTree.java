@@ -250,11 +250,9 @@ public class BinaryTree {
      * @param node
      * @return
      */
-    private static int getSize(Node node){
-        if(node != null)
-            return 1 + getSize(node.left) + getSize(node.right);
-        else
-            return 0;
+    public static int getSize(Node node){
+        if(node != null) return 1 + getSize(node.left) + getSize(node.right);
+        return 0;
     }
     public static int treeSize(){
         return getSize(root);
@@ -271,22 +269,22 @@ public class BinaryTree {
     }
 
     /**
-     * Verifica se due alberi sono uguali (nodi nella stessa posizione)
-     * @param other altro albero
+     * Verifica se due alberi dati sono uguali
+     * @param node1 root primo albero
+     * @param node2 root secondo albero
      * @return true se sono uguali, false altrimenti
      */
-    public static boolean isEquals(BinaryTree other){
-        if(treeSize() != other.treeSize())
-            return false;
-
-        ArrayList<Integer> vet1 = toArray();
-        ArrayList<Integer> vet2 = other.toArray();
-
-        for(int i = 0; i < treeSize(); i++)
-            if(vet1.get(i) != vet2.get(i))
-                return false;
-
-        return true;
+    public boolean verifyIsEquals(Node node1, Node node2){
+        if(node1 == null && node2 == null) return true;
+        if(node1 == null || node2 == null) return false;
+        if(node1.value == node2.value)
+            return verifyIsEquals(node1.left, node2.left) && verifyIsEquals(node1.right, node2.right);
+        else return false;
+    }
+    public boolean isEquals(Node node1, Node node2){
+        if(getSize(node1) == getSize(node2))
+            return verifyIsEquals(node1, node2);
+        else return false;
     }
 
     /**
@@ -370,6 +368,20 @@ public class BinaryTree {
     }
     public void depth(){
         System.out.println("La profondità massima è: " + getDepth(root));
+    }
+
+    /**
+     * Verifica se un albero è sottoalbero di un altro
+     * @param node1 root primo albero
+     * @param node2 root secondo albero
+     * @return true se un albero è sottoalbero di un altro, false altrimenti
+     */
+    public boolean isASubTree(Node node1, Node node2){
+        if(node2 == null) return true;
+        if(node1 == null) return false;
+        if(node1.value == node2.value)
+            return isASubTree(node1.left, node2.left) && isASubTree(node1.right, node2.right);
+        return isASubTree(node1.left, node2) || isASubTree(node1.right, node2);
     }
 
 }

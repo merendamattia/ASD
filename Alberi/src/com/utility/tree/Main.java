@@ -9,9 +9,12 @@ public class Main {
 //        bt.populateIncreasing();
 //        bt.populateDecreasing();
         bt.populateByUser();
+        Node n1 = bt.getRoot();
 
-        u.print("In Order");
-        bt.printInOrder(bt.getRoot());
-        Utility.endl();
+        BinaryTree bt2 = new BinaryTree();
+        bt2.populateByUser();
+        Node n2 = bt2.getRoot();
+
+        u.print(bt.isEquals(n1, n2));
     }
 }
