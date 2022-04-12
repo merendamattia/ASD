@@ -1,10 +1,6 @@
 // Source: https://www.baeldung.com/java-binary-tree
 package com.utility.tree;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Scanner;
+import java.util.*;
 
 public class BinaryTree {
 
@@ -344,7 +340,6 @@ public class BinaryTree {
         }
         return null;
     }
-
     /**
      * Avvia la procedura e i controlli per trovare un parente di un nodo
      * dato il valore di quest'ultimo
@@ -362,4 +357,19 @@ public class BinaryTree {
         if(parent1 == null && parent2 == null)
             System.out.println("Parente non trovato");
     }
+
+    /**
+     * Calcola la profondità massima di uno qualsiasi dei nodi dell'albero
+     * @param node nodo corrente
+     * @return profondità
+     */
+    private int getDepth(Node node){
+        if(node != null)
+            return 1 + Math.max(getDepth(node.left), getDepth(node.right));
+        return 0;
+    }
+    public void depth(){
+        System.out.println("La profondità massima è: " + getDepth(root));
+    }
+
 }
