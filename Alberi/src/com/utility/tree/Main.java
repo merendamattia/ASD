@@ -16,11 +16,8 @@ public class Main {
         bt.printInOrder(bt.getRoot());
         Utility.endl();
 
-        bt.deleteLeaves();
+        bt.findParent(12);
 
-        u.print("In Order");
-        bt.printInOrder(bt.getRoot());
-        Utility.endl();
 
     }
 }

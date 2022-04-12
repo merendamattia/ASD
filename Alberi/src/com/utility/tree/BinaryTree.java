@@ -326,4 +326,40 @@ public class BinaryTree {
         findParentLeaves(root.right, root);
     }
 
+    /**
+     * Serve per trovare, se esiste, il parente di un determinato nodo
+     * @param node nodo corrente
+     * @param parent padre del nodo corrente
+     * @param value valore da cercare
+     * @return parent's value
+     */
+    private Node findParentByValue(Node node, Node parent, int value){
+        if(node != null) {
+            if (node.value == value)
+                return parent;
+            if(node.left != null)
+                return findParentByValue(node.left, node, value);
+            if(node.right != null)
+                return findParentByValue(node.right, node, value);
+        }
+        return null;
+    }
+
+    /**
+     * Avvia la procedura e i controlli per trovare un parente di un nodo
+     * dato il valore di quest'ultimo
+     * @param value valore da cercare
+     */
+    public void findParent(int value){
+        Node parent1 = findParentByValue(root.left, root, value);
+        if(parent1 != null)
+            System.out.println("Il padre ha valore: " + parent1.value);
+
+        Node parent2 = findParentByValue(root.right, root, value);
+        if(parent2 != null)
+            System.out.println("Il padre ha valore: " + parent2.value);
+
+        if(parent1 == null && parent2 == null)
+            System.out.println("Parente non trovato");
+    }
 }
