@@ -292,4 +292,38 @@ public class BinaryTree {
 
         return true;
     }
+
+    /**
+     * Serve per trovare, e in seguito eliminare i figli, i parenti che hanno figli foglie
+     * @param node nodo corrente
+     * @param parent padre del nodo corrente
+     */
+    public void findParentLeaves(Node node, Node parent){
+        if(node != null) {
+            if (node.right == null && node.left == null)
+                deleteChildren(parent);
+            if(node.left != null)
+                findParentLeaves(node.left, node);
+            if(node.right != null)
+                findParentLeaves(node.right, node);
+        }
+    }
+
+    /**
+     * Elimina i figli di un nodo dato
+     * @param node
+     */
+    private void deleteChildren(Node node) {
+        node.left = null;
+        node.right = null;
+    }
+
+    /**
+     * Avvia le procedure per l'eliminazione delle foglie
+     */
+    public void deleteLeaves(){
+        findParentLeaves(root.left, root);
+        findParentLeaves(root.right, root);
+    }
+
 }
