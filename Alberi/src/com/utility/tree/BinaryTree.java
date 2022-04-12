@@ -384,4 +384,59 @@ public class BinaryTree {
         return isASubTree(node1.left, node2) || isASubTree(node1.right, node2);
     }
 
+    /**
+     * Source: https://algorithms.tutorialhorizon.com/find-the-maximum-width-of-a-binary-tree/
+     * Data una radice, restituisce la larghezza massima di un albero
+     * @param root
+     * @return larghezza massima
+     */
+    public int findMaxWidth(Node root){
+        int maxWidth = 0;
+        int levelNodes = 0;
+        Queue q = new LinkedList<>();
+        if(root == null) return 0;
+        q.add(root);
+
+        while(!q.isEmpty()){
+            levelNodes = q.size();
+
+            if(levelNodes > maxWidth)
+                maxWidth = levelNodes;
+
+            while(levelNodes > 0){
+                Node n = (Node) q.remove();
+                if(n.left != null) q.add(n.left);
+                if(n.right != null) q.add(n.right);
+                levelNodes --;
+            }
+        }
+        return maxWidth;
+    }
+
+    /* Lavori in corso
+    private boolean hasOnlyAChild(Node node){
+        if(node == null) return false;
+        if(node.left != null && node.right != null) return false;
+        if(node.left != null || node.right != null) return true;
+        return false;
+    }
+
+    public void deleteBranch(Node node){
+        if(node != null){
+            if(node.left != null){
+                if(getDepth(node.left) > 1)
+                    deleteBranch(node.left);
+                if(hasOnlyAChild(node.left))
+                 ????
+            }
+            if(node.right != null){
+                if(getDepth(node.right) > 1 && hasOnlyAChild(node.right))
+                    deleteBranch(node.right);
+            }
+        }
+
+    }
+    */
+
+
 }
