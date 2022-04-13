@@ -4,13 +4,9 @@ public class Main {
     public static void main(String[] args) {
         Utility u = new Utility();
 
-        BinaryTree bt = new BinaryTree();
-//        bt.populateRandom();
-//        bt.populateIncreasing();
-//        bt.populateDecreasing();
-        bt.populateByUser();
-        Node n1 = bt.getRoot();
 
-        u.print(bt.findMaxWidth(n1));
+        int arr[] = { 1, 3, 5, 4, 6, 13, 10, 9, 8, 15, 17 };
+        Heap h = new Heap(arr);
+        h.printHeap();
     }
 }

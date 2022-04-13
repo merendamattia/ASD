@@ -33,4 +33,11 @@ public class Utility<T> {
     public static int getRandom(int from, int to){
         return ThreadLocalRandom.current().nextInt(from, to);
     }
+
+    public static void swap(int[] arr, int index1, int index2) {
+        int tmp;
+        tmp = arr[index1];
+        arr[index1] = arr[index2];
+        arr[index2] = tmp;
+    }
 }
