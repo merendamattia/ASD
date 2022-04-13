@@ -1,3 +1,4 @@
+// Source: https://www.geeksforgeeks.org/building-heap-from-array/
 package com.utility.tree;
 
 public class Heap {
@@ -11,15 +12,14 @@ public class Heap {
     public Heap(int arr[]){
         this.arr = arr;
         this.size = arr.length;
-        //printHeap();
-        buildMaxHeap();
     }
 
     /**
      * Stampa a video Heap
      */
-    static void printHeap() {
-        for (int i = 0; i < arr.length / 2; i++) {
+    public static void printHeap() {
+        printHeapToArray();
+        for(int i = 0; i < arr.length / 2; i++) {
             System.out.print("Parent Node: " + arr[i]);
             if (leftChild(i) < arr.length) //if the child is out of the bound of the array
                 System.out.print("\n\tLeft Child: " + arr[leftChild(i)]);
@@ -28,6 +28,15 @@ public class Heap {
             Utility.endl();
         }
         Utility.endl();
+    }
+
+    /**
+     * Stampa a video Heap come array
+     */
+    public static void printHeapToArray(){
+        for(int i = 0; i < arr.length; i++)
+            System.out.print(arr[i] + " ");
+        System.out.println();
     }
 
     /**
@@ -81,5 +90,17 @@ public class Heap {
         int start = (size / 2) - 1;
         for (int i = start; i >= 0; i--)
             maxHeapify(i);
+    }
+
+    /**
+     * Heapsort: algoritmo di ordinamento degli heap
+     * Source: https://www.geeksforgeeks.org/heap-sort/
+     */
+    public void heapSort(){
+        buildMaxHeap();
+        for(int i = size - 1; i > 0; i--){
+            Utility.swap(arr, 0, i);
+            maxHeapify(0);
+        }
     }
 }
