@@ -34,6 +34,12 @@ public class Utility<T> {
         return ThreadLocalRandom.current().nextInt(from, to);
     }
 
+    /**
+     * Effettua lo swap dei valori di un array dati due indici di esso
+     * @param arr
+     * @param index1
+     * @param index2
+     */
     public static void swap(int[] arr, int index1, int index2) {
         int tmp;
         tmp = arr[index1];
