@@ -12,6 +12,7 @@ public class Heap {
     public Heap(int arr[]){
         this.arr = arr;
         this.size = arr.length;
+        buildMaxHeap();
     }
 
     /**
@@ -63,23 +64,23 @@ public class Heap {
      * condizione sia verificata.
      * @param i indice dell'array che rappresenta la posizione del nodo su cui lavorare
      */
-    public static void maxHeapify(int i) {
+    public static void maxHeapify(int n, int i) {
         int largest = i; // Initialize largest as root
         int l = leftChild(i);
         int r = rightChild(i);
 
         // If left child is larger than root
-        if (l < size && arr[l] > arr[largest])
+        if (l < n && arr[l] > arr[largest])
             largest = l;
 
         // If right child is larger than largest so far
-        if (r < size && arr[r] > arr[largest])
+        if (r < n && arr[r] > arr[largest])
             largest = r;
 
         // If largest is not root
         if (largest != i) {
             Utility.swap(arr, i, largest);
-            maxHeapify(largest);
+            maxHeapify(n, largest);
         }
     }
 
@@ -87,9 +88,9 @@ public class Heap {
      * Costruisce un Heap da un array
      */
     public static void buildMaxHeap() {
-        int start = (size / 2) - 1;
-        for (int i = start; i >= 0; i--)
-            maxHeapify(i);
+        int n = arr.length;
+        for (int i = n / 2 - 1; i >= 0; i--)
+            maxHeapify(n, i);
     }
 
     /**
@@ -98,9 +99,9 @@ public class Heap {
      */
     public void heapSort(){
         buildMaxHeap();
-        for(int i = size - 1; i > 0; i--){
+        for(int i = size - 1; i >= 0; i--){
             Utility.swap(arr, 0, i);
-            maxHeapify(0);
+            maxHeapify(i, 0);
         }
     }
 }

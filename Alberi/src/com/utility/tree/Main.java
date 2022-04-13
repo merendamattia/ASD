@@ -9,7 +9,5 @@ public class Main {
 
         Heap h = new Heap(arr);
         h.printHeap();
-        h.heapSort();
-        h.printHeap();
     }
 }
