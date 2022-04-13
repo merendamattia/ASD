@@ -39,7 +39,7 @@ public class BinaryTree {
      * @param value of node
      * @return the node
      */
-    private Node addRecursive(Node current, int value){
+    public static Node addRecursive(Node current, int value){
         if(current == null)
             return new Node(value);
 
@@ -89,7 +89,7 @@ public class BinaryTree {
      * depth-first search: in order
      * @param node
      */
-    public void printInOrder(Node node){
+    public static void printInOrder(Node node){
         if(node != null){
             printInOrder(node.left);
             System.out.print(node.value + " ");
@@ -100,7 +100,7 @@ public class BinaryTree {
      * depth-first search: pre order
      * @param node
      */
-    public void printPreOrder(Node node){
+    public static void printPreOrder(Node node){
         if(node != null){
             System.out.print(node.value + " ");
             printPreOrder(node.left);
@@ -111,7 +111,7 @@ public class BinaryTree {
      * depth-first search: post order
      * @param node
      */
-    public void printPostOrder(Node node){
+    public static void printPostOrder(Node node){
         if(node != null){
             printPostOrder(node.left);
             printPostOrder(node.right);
@@ -122,7 +122,7 @@ public class BinaryTree {
      * Breadth-First Search
      * Visits all the nodes of a level before going to the next level.
      */
-    public void printBFS(){
+    public static void printBFS(){
         if (root == null) return;
 
         Queue<Node> nodes = new LinkedList<>();
@@ -190,7 +190,7 @@ public class BinaryTree {
      * @param min
      * @return min
      */
-    private static int getMin(Node node, int min){
+    public static int getMin(Node node, int min){
         if(node == null)
             return min;
         if(node.value < min)
@@ -213,7 +213,7 @@ public class BinaryTree {
      * @param max
      * @return max
      */
-    private static int getMax(Node node, int max){
+    public static int getMax(Node node, int max){
         if(node == null)
             return max;
         if(node.value > max)
@@ -235,7 +235,7 @@ public class BinaryTree {
      * @param node root
      * @return sum
      */
-    private static int getSum(Node node){
+    public static int getSum(Node node){
         if(node != null)
             return node.value + getSum(node.left) + getSum(node.right);
         else
