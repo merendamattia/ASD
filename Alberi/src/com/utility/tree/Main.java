@@ -10,8 +10,8 @@ public class Main {
         bst.printBFS();
 
         u.endl();
-        bst.delete(5);
-        bst.printBFS();
-
+        //u.print(bst.media(bst.getRoot()));
+        u.print(bst.countMaxThen(90));
+        u.print(bst.max());
     }
 }

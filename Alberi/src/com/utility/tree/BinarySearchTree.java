@@ -2,7 +2,9 @@ package com.utility.tree;
 import java.util.*;
 
 public class BinarySearchTree {
-    private static Node root;
+    private Node root;
+    // Counter: variabile usata per il debug
+    public int counter = 0;
 
     /**
      * Getter
@@ -48,27 +50,30 @@ public class BinarySearchTree {
     /**
      * depth-first search: in order
      */
-    public static void printInOrder(){
+    public void printInOrder(){
         BinaryTree.printInOrder(root);
     }
     /**
      * depth-first search: pre order
      */
-    public static void printPreOrder(){
+    public void printPreOrder(){
         BinaryTree.printPreOrder(root);
     }
     /**
      * depth-first search: post order
      */
-    public static void printPostOrder(){
+    public void printPostOrder(){
         BinaryTree.printPostOrder(root);
     }
     /**
      * Breadth-First Search
      * Visits all the nodes of a level before going to the next level.
      */
-    public static void printBFS(){
-        if (root == null) return;
+    public void printBFS(){
+        if (root == null){
+            System.err.println("Attenzione!! - Albero vuoto!");
+            return;
+        }
 
         Queue<Node> nodes = new LinkedList<>();
         nodes.add(root);
@@ -111,29 +116,68 @@ public class BinarySearchTree {
 
     /**
      * Trova il massimo valore dell'albero
-     * @param node nodo da cui far partire la ricerca
-     * @return massimo valore
+     * @param node nodo corrente
+     * @return massimo valore presente nell'albero, -1 se l'albero è null
      */
-    public int max(Node node){
-        int massimo = node.value;
-        while(node != null){
-            massimo = node.value;
-            node = node.right;
-        }
-        return massimo;
+    private int maxRecursive(Node node){
+        if(node == null)
+            return -1;
+        if(node.right != null)
+            return maxRecursive(node.right);
+        return node.value;
     }
+    public int max(){
+        return maxRecursive(getRoot());
+    }
+
     /**
      * Trova il minimo valore dell'albero
-     * @param node nodo da cui far partire la ricerca
-     * @return minimo valore
+     * @param node nodo corrente
+     * @return minimo valore presente nell'albero, -1 se l'albero è null
      */
-    public int min(Node node){
-        int minimo = node.value;
-        while(node != null){
-            minimo = node.value;
-            node = node.left;
-        }
-        return minimo;
+    private int minRecursive(Node node){
+        if(node == null)
+            return -1;
+        if(node.left != null)
+            return minRecursive(node.left);
+        return node.value;
+    }
+    public int min(){
+        return minRecursive(getRoot());
+    }
+
+    /**
+     * Conta quanti nodi sono presenti con un valore minore di quello fornito da utente
+     * @param node nodo attuale
+     * @param value valore da confrontare
+     * @return il numero di nodi che rispettano la condizione
+     */
+    private int countMinThenRicorsive(Node node, int value){
+        if(node == null)
+            return 0;
+        if(node.value < value)
+            return 1 + countMinThenRicorsive(node.left, value) + countMinThenRicorsive(node.right, value);
+        return countMinThenRicorsive(node.left, value);
+    }
+    public int countMinThen(int value){
+        return countMinThenRicorsive(getRoot(), value);
+    }
+
+    /**
+     * Conta quanti nodi sono presenti con un valore maggiore di quello fornito da utente
+     * @param node nodo attuale
+     * @param value valore da confrontare
+     * @return il numero di nodi che rispettano la condizione
+     */
+    private int countMaxThenRicorsive(Node node, int value){
+        if(node == null)
+            return 0;
+        if(node.value > value)
+            return 1 + countMaxThenRicorsive(node.left, value) + countMaxThenRicorsive(node.right, value);
+        return countMaxThenRicorsive(node.right, value);
+    }
+    public int countMaxThen(int value){
+        return countMaxThenRicorsive(getRoot(), value);
     }
 
     /**
@@ -154,7 +198,7 @@ public class BinarySearchTree {
                 return node.right;
             if(node.right == null)
                 return node.left;
-            node.value = min(node.right);
+            node.value = minRecursive(node.right);
             node.right = deleteRecursive(node.right, node.value);
         }
         return node;
@@ -169,4 +213,21 @@ public class BinarySearchTree {
         else System.err.println("\nElemento non trovato! Impossibile eliminare.");
     }
 
+
+    // ------------------------ Area lavori
+    /**
+     * Working in progress
+     * @param node
+     * @return
+     */
+    public float media(Node node){
+        int l = 0, r = 0;
+        if(node == null)
+            return 0;
+        if(node.left != null)
+            l = node.left.value;
+        if(node.right != null)
+            r = node.right.value;
+        return (node.value + l + r) / 3;
+    }
 }
