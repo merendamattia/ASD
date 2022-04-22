@@ -1,3 +1,8 @@
-# ASD
-Unipr - Algoritmi e strutture dati.
-Algoritmi di ordinamento realizzati in Java.
+# Algoritmi e strutture dati
+
+
+- Algoritmi di ordinamento
+- Tipi di Albero:
+	- Binary Tree
+	- Binary Search Tree
+	- Heap
