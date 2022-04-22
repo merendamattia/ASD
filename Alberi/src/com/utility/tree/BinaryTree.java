@@ -3,7 +3,6 @@ package com.utility.tree;
 import java.util.*;
 
 public class BinaryTree {
-
     private static Node root;
 
     /**
@@ -123,7 +122,10 @@ public class BinaryTree {
      * Visits all the nodes of a level before going to the next level.
      */
     public static void printBFS(){
-        if (root == null) return;
+        if (root == null){
+            System.err.println("Attenzione!! - Albero vuoto!");
+            return;
+        }
 
         Queue<Node> nodes = new LinkedList<>();
         nodes.add(root);
@@ -147,7 +149,7 @@ public class BinaryTree {
      * @param vet
      * @return array
      */
-    private static ArrayList<Integer> getToArray(Node node, ArrayList<Integer> vet){
+    private ArrayList<Integer> getToArray(Node node, ArrayList<Integer> vet){
         if(node != null){
             vet = getToArray(node.left, vet);
             vet.add(node.value);
@@ -156,7 +158,7 @@ public class BinaryTree {
 
         return vet;
     }
-    public static ArrayList<Integer> toArray(){
+    public ArrayList<Integer> toArray(){
         ArrayList<Integer> vet = new ArrayList<Integer>(treeSize());
         return getToArray(root, vet);
     }
@@ -168,7 +170,7 @@ public class BinaryTree {
      * @param value to find
      * @return true se il valore è contenuto, false altrimenti
      */
-    public static boolean contains(Node node, int value){
+    public boolean contains(Node node, int value){
         if(node == null)
             return false;
         if(node.value == value)
@@ -190,7 +192,7 @@ public class BinaryTree {
      * @param min
      * @return min
      */
-    public static int getMin(Node node, int min){
+    public int getMin(Node node, int min){
         if(node == null)
             return min;
         if(node.value < min)
@@ -203,7 +205,7 @@ public class BinaryTree {
         else
             return minRight;
     }
-    public static int min(){
+    public int min(){
         return getMin(root, root.value);
     }
 
@@ -213,7 +215,7 @@ public class BinaryTree {
      * @param max
      * @return max
      */
-    public static int getMax(Node node, int max){
+    public int getMax(Node node, int max){
         if(node == null)
             return max;
         if(node.value > max)
@@ -226,7 +228,7 @@ public class BinaryTree {
         else
             return maxRight;
     }
-    public static int max(){
+    public int max(){
         return getMax(root, root.value);
     }
 
@@ -235,13 +237,13 @@ public class BinaryTree {
      * @param node root
      * @return sum
      */
-    public static int getSum(Node node){
+    public int getSum(Node node){
         if(node != null)
             return node.value + getSum(node.left) + getSum(node.right);
         else
             return 0;
     }
-    public static int sum(){
+    public int sum(){
         return getSum(root);
     }
 
@@ -250,11 +252,11 @@ public class BinaryTree {
      * @param node
      * @return
      */
-    public static int getSize(Node node){
+    public int getSize(Node node){
         if(node != null) return 1 + getSize(node.left) + getSize(node.right);
         return 0;
     }
-    public static int treeSize(){
+    public int treeSize(){
         return getSize(root);
     }
 
@@ -262,7 +264,7 @@ public class BinaryTree {
      * Ritorna la media dei valori di un albero
      * @return
      */
-    public static float average(){
+    public float average(){
         System.out.println(sum());
         System.out.println(treeSize());
         return (float) sum() / treeSize();
@@ -437,6 +439,4 @@ public class BinaryTree {
 
     }
     */
-
-
 }
