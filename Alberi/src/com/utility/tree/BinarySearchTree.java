@@ -213,21 +213,39 @@ public class BinarySearchTree {
         else System.err.println("\nElemento non trovato! Impossibile eliminare.");
     }
 
-
-    // ------------------------ Area lavori
     /**
-     * Working in progress
-     * @param node
+     * Calcola la media dei valori dell'albero
+     * effettuando il rapporto tra la somma e la dimensione
      * @return
      */
-    public float media(Node node){
-        int l = 0, r = 0;
+    public float average(){
+        return (float) BinaryTree.getSum(getRoot()) / BinaryTree.getSize(getRoot());
+    }
+
+    /**
+     * Calcola la media dei valori dell'albero
+     * in modo ricorsivo con una sola funzione
+     * @param node nodo su cui lavora
+     * @return
+     */
+    private float averageRecursive(Node node){
+        float l = 0, r = 0;
+        int divisore = 1;
+
         if(node == null)
             return 0;
-        if(node.left != null)
-            l = node.left.value;
-        if(node.right != null)
-            r = node.right.value;
-        return (node.value + l + r) / 3;
+        if(node.left != null){
+            l = averageRecursive(node.left);
+            divisore++;
+        }
+        if(node.right != null){
+            r = averageRecursive(node.right);
+            divisore++;
+        }
+
+        return (node.value + l + r) / divisore;
+    }
+    public float averageRec(){
+        return averageRecursive(getRoot());
     }
 }

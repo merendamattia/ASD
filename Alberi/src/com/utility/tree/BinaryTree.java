@@ -237,7 +237,7 @@ public class BinaryTree {
      * @param node root
      * @return sum
      */
-    public int getSum(Node node){
+    public static int getSum(Node node){
         if(node != null)
             return node.value + getSum(node.left) + getSum(node.right);
         else
@@ -252,7 +252,7 @@ public class BinaryTree {
      * @param node
      * @return
      */
-    public int getSize(Node node){
+    public static int getSize(Node node){
         if(node != null) return 1 + getSize(node.left) + getSize(node.right);
         return 0;
     }
