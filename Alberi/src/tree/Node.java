@@ -1,4 +1,4 @@
-package com.utility.tree;
+package tree;
 
 public class Node {
     int value;

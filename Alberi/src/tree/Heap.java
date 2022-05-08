@@ -1,5 +1,5 @@
 // Source: https://www.geeksforgeeks.org/building-heap-from-array/
-package com.utility.tree;
+package tree;
 
 public class Heap {
     private static int[] arr;

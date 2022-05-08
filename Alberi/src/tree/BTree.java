@@ -1,4 +1,4 @@
-package com.utility.tree;
+package tree;
 // Searching a key on a B-tree in Java 
 
 public class BTree {

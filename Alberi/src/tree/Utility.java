@@ -1,4 +1,4 @@
-package com.utility.tree;
+package tree;
 
 import java.util.concurrent.ThreadLocalRandom;
 

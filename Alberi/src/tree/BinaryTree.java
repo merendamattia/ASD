@@ -1,5 +1,5 @@
 // Source: https://www.baeldung.com/java-binary-tree
-package com.utility.tree;
+package tree;
 import java.util.*;
 
 public class BinaryTree {
