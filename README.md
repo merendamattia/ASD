@@ -6,3 +6,4 @@
 	- Binary Tree
 	- Binary Search Tree
 	- Heap
+	- B-Tree
