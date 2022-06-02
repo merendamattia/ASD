@@ -25,11 +25,11 @@ public class Main {
 //        System.out.println("Quick Sort");
 //        QuickSort.calcola(vet, 0, vet.length - 1);
 
-//        System.out.println("Counting Sort");
-//        CountingSort.calcola(vet);
+        System.out.println("Counting Sort");
+        CountingSort.calcola(vet);
 
-        System.out.println("Heap Sort");
-        HeapSort.calcola(vet);
+//        System.out.println("Heap Sort");
+//        HeapSort.calcola(vet);
 
         System.out.print("Array ordinato: ");
         Utility.printArray(vet);

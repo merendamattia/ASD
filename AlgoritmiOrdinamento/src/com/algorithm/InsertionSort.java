@@ -16,6 +16,7 @@ public class InsertionSort {
                 i--;
             }
             vet[i + 1] = chiave;
+            //Utility.printArray(vet);
         }
     }
 }
