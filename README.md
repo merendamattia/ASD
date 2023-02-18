@@ -1,9 +1,11 @@
-# Algoritmi e strutture dati
+# ASD - Algoritmi e Strutture Dati
+Corsi _"Algoritmi e Strutture Dati (9CFU)"_ e _"Laboratorio di Algoritmi e Strutture Dati (6CFU)"_ presso l'Università degli Studi di Parma.  
+```
+Guida directory:
+.
+├── laboratorio
+├── ordinamento_algoritmi
+└── tree
+```
 
-
-- Algoritmi di ordinamento
-- Tipi di Albero:
-	- Binary Tree
-	- Binary Search Tree
-	- Heap
-	- B-Tree
+> Appunti teoria: _[merendamattia.com/uni](https://www.merendamattia.com/uni.html)_
