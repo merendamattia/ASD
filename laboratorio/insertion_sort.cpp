@@ -1,9 +1,17 @@
 #include <iostream>
 #include <string.h>
+#include "./utilities/utility.h"
+
 using namespace std;
 
-void insertion_sort(int *A, int n){
-	for(int i = 0; i < n; i++) {
+/*
+ * Compilazione: g++ insertionsort.cpp -o insertion_sort
+ * Esecuzione: ./insertion_sort 100 (100 è la dimensione dell'array)
+ * Per visualizzare il tempo di esecuzione: time ./insertion_sort 100
+*/
+
+void insertion_sort(int *A, int dim){
+	for(int i = 0; i < dim; i++) {
 		for(int j = i - 1; j >= 0; j--) {
 			if(A[j] > A[j + 1])
 				swap(A[j], A[j + 1]);
@@ -11,30 +19,25 @@ void insertion_sort(int *A, int n){
 	}
 }
 
-void swap(int &a, int &b){
-	int temp = a;
-	a = b;
-	b = temp;
-}
+int main(int argc, char **argv){
+	
+	// controllo argomenti
+	if (argc != 2) {
+		printf("Inserire un solo elemento dopo il file eseguibile %s\n",argv[0]);
+		return -1;
+	}
 
-void print_array(int *A, int n){
-	cout << endl;
-	for(int i = 0; i < n; i++)
-		cout << A[i] << " ";
-}
+	int dim = atoi(argv[1]); // parsing argomento
 
-int main(){
-	int n = 100;
-	int *A = new int[n];
+	int *A = new int[dim];
 
-	for(int i = 0; i < n; i++)
-		A[i] = n - i;
+	populate_array(A, dim);
 
-	print_array(A, n);
+	//print_array(A, dim);
 
-	insertion_sort(A, n);
+	insertion_sort(A, dim);
 
-	print_array(A, n);
+	//print_array(A, dim);
 
 	return 0;
 }
