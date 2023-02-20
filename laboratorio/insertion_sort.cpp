@@ -38,6 +38,5 @@ int main(){
 
 	print_array(A, n);
 
-
 	return 0;
 }
