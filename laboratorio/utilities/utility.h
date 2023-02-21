@@ -18,7 +18,7 @@ void print_array(int *A, int n){
 }
 
 /*
- * Popola array con interi in ordine decrescente
+ * Popola array con interi in ordine decrescente: caso peggiore
 */
 void populate_array(int *A, int n){
 	for(int i = 0; i < n; i++)
