@@ -20,7 +20,8 @@ In questa pagina verranno tracciati i tempi di esecuzione dei vari algoritmi di 
 | 150           | 61,08             |
 
 >La dimensione è in migliaia (es: dim = 10 -> dimensione array = 10.000).  
->I tempi sono calcolati in secondi.
+>I tempi sono calcolati in secondi.  
+>L'array è popolato con elementi in ordine decrescente (es: dim = 5 -> array = [5, 4, 3, 2, 1]).
 
 <p align="center">
     <img src="images/time_insertion_sort.png" width="60%">
