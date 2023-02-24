@@ -31,4 +31,4 @@ In questa pagina verranno tracciati i tempi di esecuzione dei vari algoritmi di 
 - Insertion Sort: $O(n^2)$
 
 ---
-_Disclaimer: questi tempi di esecuzione sono stati raccolti utilizzando una macchina con chip M2 (Apple)._
+_Disclaimer: questi tempi di esecuzione sono stati raccolti utilizzando una macchina con chip M2 (Apple Silicon)._
