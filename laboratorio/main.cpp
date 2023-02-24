@@ -1,6 +1,7 @@
 #include <iostream>
 #include "./utilities/utility.h"
 #include "./algorithms/insertion_sort.cpp"
+
 using namespace std;
 
 /*
@@ -27,7 +28,7 @@ int main(int argc, char **argv){
 
 	insertion_sort(A, dim);
 
-	//print_array(A, dim);
+	print_array(A, dim);
 
 	return 0;
 }
