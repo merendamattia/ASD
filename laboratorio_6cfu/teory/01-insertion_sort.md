@@ -6,7 +6,7 @@
 **for** $i \leftarrow 2$ **to** $\text{lenght}[A]$ **do**  <br>
 $\text{  key} \leftarrow A[i]$ <br>
 &nbsp;&nbsp;// Inserisce $A[i]$ nella sequenza ordinata $A[1 \, \ldots \, i-1]$ <br>
-&nbsp;&nbsp$j \leftarrow i-1$ <br>
+&nbsp;&nbsp;$j \leftarrow i-1$ <br>
 &nbsp;&nbsp;&nbsp;&nbsp;**while** $j>0 \text{ and } A[j]>\text{key}$ **do** <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$A[j+1] \leftarrow A[j]$ <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$j \leftarrow j-1$ <br>
