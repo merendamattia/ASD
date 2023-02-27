@@ -35,7 +35,8 @@ $$
 $$ 
 operazioni aritmetico-logiche.
 
-<img src="../images/time_insertion_sort.png" alt="drawing" width="200"/>
+
+<img src="../images/time_insertion_sort.png" alt="drawing" width="200" class="center"/>
 
 ### Caso migliore $O(n)$
 L'array $A$ è già ordinato in senso crescente.
