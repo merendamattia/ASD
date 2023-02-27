@@ -30,7 +30,7 @@ $$ chiamate a `swap()` e    $$
 	\frac{n \cdot (7n - 3)}{2} = O(n^2)
 $$ operazioni aritmetico-logiche.
 
-![img](time_insertion_sort.png)
+![img](../images/time_insertion_sort.png)
 
 ### Caso migliore $O(n)$
 L'array $A$ è già ordinato in senso crescente.
