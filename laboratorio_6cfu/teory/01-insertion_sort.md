@@ -2,15 +2,15 @@
 
 ## Pseudocodice
 
-**INSERTION-SORT(A):** <br>
-**for** $i \leftarrow 2$ **to** $\text{lenght}[A]$ **do**  <br>
-$\text{  key} \leftarrow A[i]$ <br>
-&nbsp;&nbsp;// Inserisce $A[i]$ nella sequenza ordinata $A[1 \, \ldots \, i-1]$ <br>
-&nbsp;&nbsp;$j \leftarrow i-1$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;**while** $j>0 \text{ and } A[j]>\text{key}$ **do** <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$A[j+1] \leftarrow A[j]$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$j \leftarrow j-1$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;$A[j+1] \leftarrow \text{key}$ <br>
+**INSERTION-SORT(A):**
+	**for** $i \leftarrow 2$ **to** $\text{lenght}[A]$ **do** 
+		$\text{key} \leftarrow A[i]$
+		// Inserisce $A[i]$ nella sequenza ordinata $A[1 \, \ldots \, i-1]$
+		$j \leftarrow i-1$
+		**while** $j>0 \text{ and } A[j]>\text{key}$ **do**
+			$A[j+1] \leftarrow A[j]$
+			$j \leftarrow j-1$
+		$A[j+1] \leftarrow \text{key}$
 
 ## Analisi computazionale
 Nella soluzione non teniamo traccia del costo degli assegnamenti ma solo del numero di **letture/scritture** in memoria e di **operazioni** effettuate (confronti, somme, decrementi, $\ldots$ ). 
