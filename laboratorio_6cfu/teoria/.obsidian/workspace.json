@@ -1,0 +1,169 @@
+{
+  "main": {
+    "id": "14b407d96cd5e41e",
+    "type": "split",
+    "children": [
+      {
+        "id": "65ab37bcd45159e8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5a162a79dcd8f9fd",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "insertion.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "1ffd4f572b9a0b8e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6fb14e6e77573279",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "insertion.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "cc77e5e9436f481d",
+    "type": "split",
+    "children": [
+      {
+        "id": "043eb8f732a77e9e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f53e9a8e952fdd22",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "72c8e91e191bceda",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "cf1ba85e909705da",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "f6fa9bd716696407",
+    "type": "split",
+    "children": [
+      {
+        "id": "cc084b1db105accf",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "901e75a4c737bf5c",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "insertion.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "d558afefe05cc0d9",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "insertion.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "ac684322a97fb6be",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "443a25c5894ad8c0",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "insertion.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Apri selezione rapida": false,
+      "graph:Apri vista grafo": false,
+      "canvas:Crea nuova lavagna": false,
+      "daily-notes:Apri nota del giorno": false,
+      "templates:Inserisci modello": false,
+      "command-palette:Apri riquadro comandi": false
+    }
+  },
+  "active": "5a162a79dcd8f9fd",
+  "lastOpenFiles": []
+}
