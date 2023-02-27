@@ -3,14 +3,14 @@
 ## Pseudocodice
 
 **INSERTION-SORT(A):**
-	**for** $i \leftarrow 2$ **to** $\text{lenght}[A]$ **do**  
-		$\text{key} \leftarrow A[i]$
-		// Inserisce $A[i]$ nella sequenza ordinata $A[1 \, \ldots \, i-1]$
-		$j \leftarrow i-1$
-		**while** $j>0 \text{ and } A[j]>\text{key}$ **do**
-			$A[j+1] \leftarrow A[j]$
-			$j \leftarrow j-1$
-		$A[j+1] \leftarrow \text{key}$
+	**for** $i \leftarrow 2$ **to** $\text{lenght}[A]$ **do**  <br>
+		$\text{key} \leftarrow A[i]$ <br>
+		// Inserisce $A[i]$ nella sequenza ordinata $A[1 \, \ldots \, i-1]$ <br>
+		$j \leftarrow i-1$ <br>
+		**while** $j>0 \text{ and } A[j]>\text{key}$ **do** <br>
+			$A[j+1] \leftarrow A[j]$ <br>
+			$j \leftarrow j-1$ <br>
+		$A[j+1] \leftarrow \text{key}$ <br>
 
 ## Analisi computazionale
 Nella soluzione non teniamo traccia del costo degli assegnamenti ma solo del numero di **letture/scritture** in memoria e di **operazioni** effettuate (confronti, somme, decrementi, $\ldots$ ). 
