@@ -1,3 +1,11 @@
+# Note sul calcolo della complessità 
+La **complessità** di un algoritmo può far riferimento a diversi tipi di fattori:
+- letture/scritture in memoria
+- operazioni aritmetico/logiche
+- spazio occupato in memoria
+- numero di chiamate a funzioni
+Tipicamente, nelle soluzioni viste a lezione non teniamo traccia del costo degli assegnamenti (scelta personale) ma sommiamo il numero di **letture/scritture** in memoria e di **operazioni** effettuate (confronti, somme, decrementi, $\ldots$ ).
+
 # Algoritmi di ordinamento 
 In questa pagina verranno tracciati i tempi di esecuzione dei vari algoritmi di ordinamento.  
 
