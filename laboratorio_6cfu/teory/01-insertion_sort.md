@@ -35,9 +35,6 @@ $$
 $$ 
 operazioni aritmetico-logiche.
 
-
-<img src="../images/time_insertion_sort.png" alt="drawing" width="200" class="center"/>
-
 ### Caso migliore $O(n)$
 L'array $A$ è già ordinato in senso crescente.
 `ct_op` e `ct_swap` a meno di una costante sono proporzionali a $n$ (stesso ragionamento del precedente paragrafo).
