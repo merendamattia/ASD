@@ -4,9 +4,9 @@
 
 **INSERTION-SORT(A):** <br>
 **for** $i \leftarrow 2$ **to** $\text{lenght}[A]$ **do**  <br>
-	 $\text{key} \leftarrow A[i]$ <br>
+$\text{  key} \leftarrow A[i]$ <br>
 		 // Inserisce $A[i]$ nella sequenza ordinata $A[1 \, \ldots \, i-1]$ <br>
-		$j \leftarrow i-1$ <br>
+		$\text{  }j \leftarrow i-1$ <br>
 		**while** $j>0 \text{ and } A[j]>\text{key}$ **do** <br>
 			$A[j+1] \leftarrow A[j]$ <br>
 			$j \leftarrow j-1$ <br>
