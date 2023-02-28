@@ -18,7 +18,7 @@ Nella soluzione non teniamo traccia del costo degli assegnamenti ma solo del num
 
 Contiamo il numero di *swap* e di *confronti/incrementi* che vengono eseguiti nel codice tramite due variabili globali: `ct_op` e `ct_swap`, inizializzate a `0`.
 
-### Caso peggiore $O(n^2)$
+## Caso peggiore $O(n^2)$
 L'array $A$ è ordinato in senso decrescente.
 `ct_op` e `ct_swap` a meno di una costante sono proporzionali a $n^2$ , infatti vengono eseguite
 $$	
@@ -35,6 +35,9 @@ $$
 $$ 
 operazioni aritmetico-logiche.
 
-### Caso migliore $O(n)$
+### _Curiosità storica_
+La formula delle chiamate a `swap()` è la formula di _Gauss_ per la somma dei primi $n$ numeri naturali.
+
+## Caso migliore $O(n)$
 L'array $A$ è già ordinato in senso crescente.
 `ct_op` e `ct_swap` a meno di una costante sono proporzionali a $n$ (stesso ragionamento del precedente paragrafo).

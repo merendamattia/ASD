@@ -1,7 +1,7 @@
 /*
  * Compilazione: g++ insertion.cpp -o insertion
- * Esecuzione: ./main 100 1 (100 è la dimensione dell'array, 1 è il valore della variabile "details")
- * Per visualizzare il tempo di esecuzione: time ./main 100 1
+ * Esecuzione: ./insertion 100 1 (100 è la dimensione dell'array, 1 è il valore della variabile "details")
+ * Per visualizzare il tempo di esecuzione: time ./insertion 100 1
 */
 
 #include <iostream>
@@ -54,8 +54,8 @@ void insertion_sort_debug(int *A, int dim) {
 			ct_op += 2; // decremento (j--) + test (j >= 0)
 
 			ct_op += 3; // 2 letture in memoria (A[j] e A[j + 1]) + test
+			
 			if(A[j] > A[j + 1]){
-				
 				ct_op += 2;	// 2 letture in memoria (A[j] e A[j + 1]) + chiamata funzione swap
 				swap(A[j], A[j + 1]);
 			}	
@@ -72,31 +72,31 @@ void insertion_sort_debug(int *A, int dim) {
 
 int main(int argc, char **argv){
 	if (argc < 2 || argc > 3) {
-		 cout << "Usage: " << argv[0] << " dim-array [details=0/1]" << endl;
+		cout << "Usage: " << argv[0] << " dim-array [details=0/1]" << endl;
 		return 1;
 	}
 
 	int n = atoi(argv[1]);
-	if (n<=0) {
-		cerr << "Invalid argument" << endl;
+
+	if (n <= 0) {
+		cerr << "Invalid argument, dim must be > 0" << endl;
 		return 1;
 	}
 
 	if (argc == 3)
         details = atoi(argv[2]);
 
-	int* A = new int[n];
-	for (int i = 0; i < n; i++)
-		A[i] = n-i;
-	
-	// init random
-    srand((unsigned)time(NULL));
+	int* A = new int[n]; // init array
+		
+    srand((unsigned)time(NULL)); // init random
+
 	populate_array(A, n);
 	insertion_sort_debug(A, n);
-	print_array(A, n);
+	//print_array(A, n);
 
 	cout << "Totale swap: " << ct_swap << endl;
-	cout << "Totale op: " << ct_op << endl;
+	cout << "Totale operazioni: " << ct_op << endl;
 
 	delete [] A;
+	return 0;
 }

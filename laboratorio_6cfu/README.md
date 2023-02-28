@@ -4,10 +4,11 @@ La **complessità** di un algoritmo può far riferimento a diversi tipi di fatto
 - operazioni aritmetico/logiche
 - spazio occupato in memoria
 - numero di chiamate a funzioni
+
 Tipicamente, nelle soluzioni viste a lezione non teniamo traccia del costo degli assegnamenti (scelta personale) ma sommiamo il numero di **letture/scritture** in memoria e di **operazioni** effettuate (confronti, somme, decrementi, $\ldots$ ).
 
 # Algoritmi di ordinamento 
-In questa pagina verranno tracciati i tempi di esecuzione dei vari algoritmi di ordinamento.  
+In questa tabella verranno tracciati i tempi di esecuzione dei vari algoritmi di ordinamento.  
 
 | Dimensione    | Insertion Sort    |
 | ------------- | -------------     |
@@ -31,9 +32,7 @@ In questa pagina verranno tracciati i tempi di esecuzione dei vari algoritmi di 
 >I tempi sono calcolati in secondi.  
 >L'array è popolato con elementi in ordine decrescente (es: dim = 5 -> array = [5, 4, 3, 2, 1]).
 
-<p align="center">
-    <img src="images/time_insertion_sort.png" width="60%">
-</p>
+![images/time_insertion_sort.png](images/time_insertion_sort.png)
 
 ### Complessità caso medio
 - Insertion Sort: $O(n^2)$
