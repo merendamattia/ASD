@@ -1,4 +1,4 @@
-f# Merge sort
+# Merge sort
 Questo algoritmo di ordinamento si basa sul metodo *"Divide et Impera"*: suddividiamo il problema principale in vari sottoproblemi, simili al problema originale, ma di dimensioni più piccole. Risolviamo questi problemi in modo ricorsivo. 
 
 Sono presenti tre passi ad ogni livello di ricorsione:
