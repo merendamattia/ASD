@@ -1,0 +1,252 @@
+digraph g
+{ 
+node [shape=plaintext]
+node_before0_9 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+<TR><TD bgcolor="#80f0b0">0</TD></TR><TR><TD>13</TD>
+<TD>17</TD>
+<TD>10</TD>
+<TD>8</TD>
+<TD>15</TD>
+<TD>15</TD>
+<TD>23</TD>
+<TD>0</TD>
+<TD>25</TD>
+<TD>1</TD>
+</TR> </TABLE>>];
+node_before0_4 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+<TR><TD bgcolor="#80f0b0">1</TD></TR><TR><TD>13</TD>
+<TD>17</TD>
+<TD>10</TD>
+<TD>8</TD>
+<TD>15</TD>
+</TR> </TABLE>>];
+node_before5_9 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+<TR><TD bgcolor="#80f0b0">2</TD></TR><TR><TD>15</TD>
+<TD>23</TD>
+<TD>0</TD>
+<TD>25</TD>
+<TD>1</TD>
+</TR> </TABLE>>];
+node_before0_9 -> node_before0_4
+node_before0_9 -> node_before5_9
+node_before0_2 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+<TR><TD bgcolor="#80f0b0">3</TD></TR><TR><TD>13</TD>
+<TD>17</TD>
+<TD>10</TD>
+</TR> </TABLE>>];
+node_before3_4 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+<TR><TD bgcolor="#80f0b0">4</TD></TR><TR><TD>8</TD>
+<TD>15</TD>
+</TR> </TABLE>>];
+node_before0_4 -> node_before0_2
+node_before0_4 -> node_before3_4
+node_before0_1 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+<TR><TD bgcolor="#80f0b0">5</TD></TR><TR><TD>13</TD>
+<TD>17</TD>
+</TR> </TABLE>>];
+node_before2_2 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+<TR><TD bgcolor="#80f0b0">6</TD></TR><TR><TD>10</TD>
+</TR> </TABLE>>];
+node_before0_2 -> node_before0_1
+node_before0_2 -> node_before2_2
+node_before0_0 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+<TR><TD bgcolor="#80f0b0">7</TD></TR><TR><TD>13</TD>
+</TR> </TABLE>>];
+node_before1_1 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+<TR><TD bgcolor="#80f0b0">8</TD></TR><TR><TD>17</TD>
+</TR> </TABLE>>];
+node_before0_1 -> node_before0_0
+node_before0_1 -> node_before1_1
+node_before0_0 -> node_after0_0
+node_before1_1 -> node_after1_1
+node_after0_0 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+<TR><TD bgcolor="#80f0b0">9</TD></TR><TR><TD>13</TD>
+</TR> </TABLE>>];
+node_after1_1 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+<TR><TD bgcolor="#80f0b0">10</TD></TR><TR><TD>17</TD>
+</TR> </TABLE>>];
+node_after0_0 -> node_after0_1
+node_after1_1 -> node_after0_1
+node_before2_2 -> node_after2_2
+node_after0_1 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+<TR><TD bgcolor="#80f0b0">11</TD></TR><TR><TD>13</TD>
+<TD>17</TD>
+</TR> </TABLE>>];
+node_after2_2 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+<TR><TD bgcolor="#80f0b0">12</TD></TR><TR><TD>10</TD>
+</TR> </TABLE>>];
+node_after0_1 -> node_after0_2
+node_after2_2 -> node_after0_2
+node_before3_3 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+<TR><TD bgcolor="#80f0b0">13</TD></TR><TR><TD>8</TD>
+</TR> </TABLE>>];
+node_before4_4 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+<TR><TD bgcolor="#80f0b0">14</TD></TR><TR><TD>15</TD>
+</TR> </TABLE>>];
+node_before3_4 -> node_before3_3
+node_before3_4 -> node_before4_4
+node_before3_3 -> node_after3_3
+node_before4_4 -> node_after4_4
+node_after3_3 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+<TR><TD bgcolor="#80f0b0">15</TD></TR><TR><TD>8</TD>
+</TR> </TABLE>>];
+node_after4_4 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+<TR><TD bgcolor="#80f0b0">16</TD></TR><TR><TD>15</TD>
+</TR> </TABLE>>];
+node_after3_3 -> node_after3_4
+node_after4_4 -> node_after3_4
+node_after0_2 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+<TR><TD bgcolor="#80f0b0">17</TD></TR><TR><TD>10</TD>
+<TD>13</TD>
+<TD>17</TD>
+</TR> </TABLE>>];
+node_after3_4 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+<TR><TD bgcolor="#80f0b0">18</TD></TR><TR><TD>8</TD>
+<TD>15</TD>
+</TR> </TABLE>>];
+node_after0_2 -> node_after0_4
+node_after3_4 -> node_after0_4
+node_before5_7 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+<TR><TD bgcolor="#80f0b0">19</TD></TR><TR><TD>15</TD>
+<TD>23</TD>
+<TD>0</TD>
+</TR> </TABLE>>];
+node_before8_9 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+<TR><TD bgcolor="#80f0b0">20</TD></TR><TR><TD>25</TD>
+<TD>1</TD>
+</TR> </TABLE>>];
+node_before5_9 -> node_before5_7
+node_before5_9 -> node_before8_9
+node_before5_6 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+<TR><TD bgcolor="#80f0b0">21</TD></TR><TR><TD>15</TD>
+<TD>23</TD>
+</TR> </TABLE>>];
+node_before7_7 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+<TR><TD bgcolor="#80f0b0">22</TD></TR><TR><TD>0</TD>
+</TR> </TABLE>>];
+node_before5_7 -> node_before5_6
+node_before5_7 -> node_before7_7
+node_before5_5 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+<TR><TD bgcolor="#80f0b0">23</TD></TR><TR><TD>15</TD>
+</TR> </TABLE>>];
+node_before6_6 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+<TR><TD bgcolor="#80f0b0">24</TD></TR><TR><TD>23</TD>
+</TR> </TABLE>>];
+node_before5_6 -> node_before5_5
+node_before5_6 -> node_before6_6
+node_before5_5 -> node_after5_5
+node_before6_6 -> node_after6_6
+node_after5_5 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+<TR><TD bgcolor="#80f0b0">25</TD></TR><TR><TD>15</TD>
+</TR> </TABLE>>];
+node_after6_6 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+<TR><TD bgcolor="#80f0b0">26</TD></TR><TR><TD>23</TD>
+</TR> </TABLE>>];
+node_after5_5 -> node_after5_6
+node_after6_6 -> node_after5_6
+node_before7_7 -> node_after7_7
+node_after5_6 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+<TR><TD bgcolor="#80f0b0">27</TD></TR><TR><TD>15</TD>
+<TD>23</TD>
+</TR> </TABLE>>];
+node_after7_7 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+<TR><TD bgcolor="#80f0b0">28</TD></TR><TR><TD>0</TD>
+</TR> </TABLE>>];
+node_after5_6 -> node_after5_7
+node_after7_7 -> node_after5_7
+node_before8_8 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+<TR><TD bgcolor="#80f0b0">29</TD></TR><TR><TD>25</TD>
+</TR> </TABLE>>];
+node_before9_9 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+<TR><TD bgcolor="#80f0b0">30</TD></TR><TR><TD>1</TD>
+</TR> </TABLE>>];
+node_before8_9 -> node_before8_8
+node_before8_9 -> node_before9_9
+node_before8_8 -> node_after8_8
+node_before9_9 -> node_after9_9
+node_after8_8 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+<TR><TD bgcolor="#80f0b0">31</TD></TR><TR><TD>25</TD>
+</TR> </TABLE>>];
+node_after9_9 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+<TR><TD bgcolor="#80f0b0">32</TD></TR><TR><TD>1</TD>
+</TR> </TABLE>>];
+node_after8_8 -> node_after8_9
+node_after9_9 -> node_after8_9
+node_after5_7 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+<TR><TD bgcolor="#80f0b0">33</TD></TR><TR><TD>0</TD>
+<TD>15</TD>
+<TD>23</TD>
+</TR> </TABLE>>];
+node_after8_9 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+<TR><TD bgcolor="#80f0b0">34</TD></TR><TR><TD>1</TD>
+<TD>25</TD>
+</TR> </TABLE>>];
+node_after5_7 -> node_after5_9
+node_after8_9 -> node_after5_9
+node_after0_4 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+<TR><TD bgcolor="#80f0b0">35</TD></TR><TR><TD>8</TD>
+<TD>10</TD>
+<TD>13</TD>
+<TD>15</TD>
+<TD>17</TD>
+</TR> </TABLE>>];
+node_after5_9 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+<TR><TD bgcolor="#80f0b0">36</TD></TR><TR><TD>0</TD>
+<TD>1</TD>
+<TD>15</TD>
+<TD>23</TD>
+<TD>25</TD>
+</TR> </TABLE>>];
+node_after0_4 -> node_after0_9
+node_after5_9 -> node_after0_9
+node_after0_9 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+<TR><TD bgcolor="#80f0b0">37</TD></TR><TR><TD>0</TD>
+<TD>1</TD>
+<TD>8</TD>
+<TD>10</TD>
+<TD>13</TD>
+<TD>15</TD>
+<TD>15</TD>
+<TD>17</TD>
+<TD>23</TD>
+<TD>25</TD>
+</TR> </TABLE>>];
+}

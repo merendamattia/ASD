@@ -1,0 +1,35 @@
+digraph {
+	node [color="black"]
+	root [label="c*n",]
+	s1_0 [label="c*n/2"]
+	s1_1 [label="c*n/2"]
+	s2_0 [label="c*n/4"]
+	s2_1 [label="c*n/4"]
+	s2_2 [label="c*n/4"]
+	s2_3 [label="c*n/4"]
+	sx_0 [label="c"]
+	sx_1 [label="c"]
+	sx_2 [label="c"]
+	sx_3 [label="c"]
+	sx_4 [label="c"]
+	sx_5 [label="c"]
+	sx_6 [label="c"]
+	sx_7 [label="c"]
+
+
+	root -> s1_0 [xlabel="T(n/2)"]
+	root -> s1_1 [label="T(n/2)"]
+	s1_0 -> s2_0
+	s1_0 -> s2_1
+	s1_1 -> s2_2
+	s1_1 -> s2_3
+	
+	s2_0 -> sx_0 [style="dotted", arrowhead="none"]
+	s2_0 -> sx_1 [style="dotted", arrowhead="none"]
+	s2_1 -> sx_2 [style="dotted", arrowhead="none"]
+	s2_1 -> sx_3 [style="dotted", arrowhead="none"]
+	s2_2 -> sx_4 [style="dotted", arrowhead="none"]
+	s2_2 -> sx_5 [style="dotted", arrowhead="none"]
+	s2_3 -> sx_6 [style="dotted", arrowhead="none"]
+	s2_3 -> sx_7 [style="dotted", arrowhead="none"]
+}

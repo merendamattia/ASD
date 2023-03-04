@@ -3,7 +3,7 @@
 ```
 --- 
 
-Il Merge Sort si basa sul metodo *"Divide et Impera"*: suddividiamo il problema principale in vari sottoproblemi, simili al problema originale, ma di dimensioni più piccole. Risolviamo questi problemi in modo ricorsivo. 
+Il Merge Sort si basa sul metodo *"Divide et Impera"*: suddividiamo il problema principale in vari sotto-problemi, simili al problema originale, ma di dimensioni più piccole. Risolviamo questi sotto-problemi ricorsivamente. 
 
 Il modello teorico del Merge Sort può essere descritto come segue:
 1. <mark style="background: #FFF3A3A6;">Divide:</mark> la lista non ordinata viene divisa in due parti uguali, o quasi uguali, fino a quando ogni parte non può più essere divisa in parti più piccole.
@@ -47,9 +47,40 @@ _[Torna all'indice](#merge%20sort)_
 ---
 
 ## Analisi computazionale
-- <mark style="background: #FFB86CA6;">Tempo di esecuzione:</mark> il Merge Sort ha un tempo di esecuzione medio e peggiore dei casi di $O\left({ n \cdot \log(n) }\right)$. Questo significa che il tempo di esecuzione dell'algoritmo cresce in modo logaritmico rispetto alla dimensione dell'input. Questa complessità di tempo rende il Merge Sort un algoritmo efficiente per ordinare grandi quantità di dati.
-- <mark style="background: #FFB86CA6;">Spazio di memoria:</mark> il Merge Sort richiede un'area di memoria ausiliaria per la fase di unione delle liste divise, in cui si memorizzano temporaneamente gli elementi ordinati. L'area di memoria ausiliaria richiesta dall'algoritmo è di $O(n)$, dove $n$ rappresenta la lunghezza della lista da ordinare. Ciò significa che l'algoritmo richiede un quantitativo di memoria aggiuntiva proporzionale alla dimensione dell'input.
+- <mark style="background: #FFB86CA6;">Numero di operazioni:</mark> il Merge Sort ha in tutti i casi una complessità pari a $\Theta\left({ n \cdot \log(n) }\right)$, il che lo rende uno degli algoritmi di ordinamento più efficienti.
+- <mark style="background: #FFB86CA6;">Spazio di memoria:</mark> richiede un'area di memoria ausiliaria per la fase di unione delle liste divise, in cui si memorizzano temporaneamente gli elementi ordinati. L'area di memoria ausiliaria richiesta dall'algoritmo è di $O(n)$, dove $n$ rappresenta la lunghezza della lista da ordinare. Ciò significa che l'algoritmo richiede un quantitativo di memoria aggiuntiva proporzionale alla dimensione dell'input. Opzionalmente <mark style="background: #ABF7F7A6;">si può lavorare *in loco*</mark> sull'array senza bisogno di una memoria aggiuntiva (effettuando swap tra gli elementi dei due sottoarray considerati). 
 
+### Perchè $\Theta\left({ n \cdot \log(n) }\right)$ ?
+Descriviamo l'algoritmo tramite una *equazione di ricorrenza*:
+$$
+	T(n) = 
+		T{\left({ \left\lfloor{ \frac{n}{2} }\right\rfloor }\right)} +
+		T{\left({ \left\lceil{ \frac{n}{2} }\right\rceil }\right)} +
+		\Theta(n)
+$$
+dove il costo $\Theta(n)$ è quello associato alla chiamata **Merge** in ogni passo ricorsivo; per $n$ sufficientemente grande possiamo approssimare l'equazione in 
+$$
+	T(n) = 
+		2 \cdot T{\left({ \left\lfloor{ \frac{n}{2} }\right\rfloor }\right)} +
+		\Theta(n)
+$$
+A questo punto utilizziamo un <mark style="background: #BBFABBA6;">albero di ricorsione</mark> per visualizzare i costi legati ad ogni chiamata ricorsiva:
+
+![[rec_tree.png]]
+
+Senza perdere di generalità consideriamo $n$ pari ad una potenza di $2$, ottenendo un albero completo con $\left\lfloor{ \log_2(n) }\right\rfloor + 1$ livelli. Secondo questa rappreserntazione, in ogni nodo è contenuto il costo della procedura **Merge** applicato al relativo input mentre i sottoalberi sinistro e destro fanno riferimento al costo delle chiamate ricorsive.
+Poichè ad ogni chiamata l'input viene dimezzato, nel livello $\left\lfloor{ \log_2(n) }\right\rfloor$ ci saranno le foglie aventi dimensione necessariamente $1$; ciò significa che qui la procedura Merge impiegherà un tempo costante $c$ per terminare. 
+
+Troviamo ora il **costo complessivo** sommando i singoli costi contenuti in ogni nodo, osservando che per ogni livello la somma dei costi è costante e pari a $c \cdot n$:
+$$
+	\sum_{i=0}^{\left\lfloor{ \log_2(n) }\right\rfloor}{c \cdot n} =
+	cn \cdot \sum_{i=0}^{\left\lfloor{ \log_2(n) }\right\rfloor}{1} =
+	cn \cdot \log_2(n) =
+	\Theta(n \cdot \log_2(n))	
+$$
+Visto che per ogni tipologia di input vengono comunque effettuate tutte le chiamate ricorsive, in definitiva possiamo affermare che la complessità di Merge Sort è $\Theta(n \cdot \log_2(n))$ .
+
+### Graficamente
 Di seguito il grafico che mette a confronto il <mark style="background: #ADCCFFA6;">numero di comparazioni medie</mark> e il <mark style="background: #FF5582A6;">numero delle comparazioni nel modello teorico nel caso peggiore</mark> (_worst case_: array ordinato in ordine decrescente).
 ![[merge_worst_avg.png]]
 
