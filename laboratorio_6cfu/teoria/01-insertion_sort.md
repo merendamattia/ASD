@@ -42,6 +42,10 @@ $$
 operazioni aritmetico-logiche.
 Quindi la complessità nel caso perggiore è: $O(n^2)$.
 
+
+
+![[worst_insertion.gif]]
+
 #### Curiosità storica
 La formula delle chiamate a `swap()` è la formula di _Gauss_ per la somma dei primi $n$ numeri naturali.
 
@@ -58,6 +62,12 @@ _[Ritorna all'indice](#insertion%20sort)_
 
 ---
 
+### Caso medio
+
+![[worst_insertion.gif]]
+
+_[Ritorna all'indice](#insertion%20sort)_
+
 ## Recall notazione O
 $O(g(n))$ è l'insieme di tutte le funzioni $f(n)$ per cui esistono due costanti positive $c$ e $n_0$ tali che $f(n) ≤ c*g(n)$ per tutti gli $n≥n_0$. 
 
@@ -65,3 +75,4 @@ $O(g(n))$ è l'insieme di tutte le funzioni $f(n)$ per cui esistono due costanti
 L'invariante di ciclo è una proprietà che rimane invariata. Per far si che l'algoritmo sia corretto, dobbiamo verificare che questa proprietà sia valida all'inizio, alla fine di ogni iterazione e alla fine della funzione.
 
 _[Ritorna all'indice](#insertion%20sort)_
+
