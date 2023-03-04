@@ -2,6 +2,7 @@
 ```toc
 ```
 ---
+*Insertion sort* è uno degli algoritmi di ordinamento più semplici, basato sui confronti.
 
 ## Pseudocodice
 ``` bash
