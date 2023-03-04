@@ -78,7 +78,9 @@ $$
 	cn \cdot \log_2(n) =
 	\Theta(n \cdot \log_2(n))	
 $$
-Visto che per ogni tipologia di input vengono comunque effettuate tutte le chiamate ricorsive, in definitiva possiamo affermare che la complessità di Merge Sort è $\Theta(n \cdot \log_2(n))$ .
+Visto che per ogni tipologia di input vengono comunque effettuate tutte le chiamate ricorsive, in definitiva possiamo affermare che la complessità di Merge Sort è $\Theta(n \cdot \log_2(n))$.
+
+_[Torna all'indice](#merge%20sort)_
 
 ### Graficamente
 Di seguito il grafico che mette a confronto il <mark style="background: #ADCCFFA6;">numero di comparazioni medie</mark> e il <mark style="background: #FF5582A6;">numero delle comparazioni nel modello teorico nel caso peggiore</mark> (_worst case_: array ordinato in ordine decrescente).
@@ -99,10 +101,11 @@ Quindi, in <mark style="background: #FFB86CA6;">sintesi</mark>, se usiamo una di
 
 _[Torna all'indice](#merge%20sort)_
 
+---
 
-### Caso peggiore
+## Animazioni
+
 ![[worst_merge.gif]]
-### Caso medio
 ![[common_merge.gif]]
 
 _[Torna all'indice](#merge%20sort)_

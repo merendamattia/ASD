@@ -13,6 +13,14 @@ Tipicamente, nelle soluzioni viste a lezione non teniamo traccia del costo degli
 
 ---
 
+## Recall notazione O
+$O(g(n))$ è l'insieme di tutte le funzioni $f(n)$ per cui esistono due costanti positive $c$ e $n_0$ tali che $f(n) ≤ c*g(n)$ per tutti gli $n≥n_0$. 
+
+## Recall invariante di ciclo
+L'invariante di ciclo è una proprietà che rimane invariata. Per far si che l'algoritmo sia corretto, dobbiamo verificare che questa proprietà sia valida all'inizio, alla fine di ogni iterazione e alla fine della funzione.
+
+---
+
 # Wiki 
 Ecco un semplice elenco di linee guida da seguire per partecipare alla stesura degli appunti e per mantenere il codice il più ordinato e leggibile possibile.
 1. Per visualizzare bene gli appunti utilizzeremo _Obsidian_: software che permette di prendere appunti che opera su file Markdown `.md`. La preview che si vede su Github può risultare incompleta o non leggibile.
