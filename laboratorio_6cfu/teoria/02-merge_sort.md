@@ -86,7 +86,7 @@ _[Torna all'indice](#merge%20sort)_
 Di seguito il grafico che mette a confronto il <mark style="background: #ADCCFFA6;">numero di comparazioni medie</mark> e il <mark style="background: #FF5582A6;">numero delle comparazioni nel modello teorico nel caso peggiore</mark> (_worst case_: array ordinato in ordine decrescente).
 ![[merge_worst_avg.png]]
 
-Possiamo notare che in alcuni punti il numero di comparazioni medie supera il numero delle comparazioni nel modello teorico nel caso peggiore. Se mettiamo in un grafico la differenza di questi valori (`avg_cmp - worst_case_cmp`) otteniamo il seguente risultato:
+Possiamo notare che in alcuni punti il numero di comparazioni medie supera il numero delle comparazioni del modello teorico nel caso peggiore. Se mettiamo in un grafico la differenza di questi valori (`avg_cmp - worst_case_cmp`) otteniamo il seguente risultato:
 
 ![[merge_differenze.png]]
 

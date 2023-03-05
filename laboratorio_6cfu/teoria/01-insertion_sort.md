@@ -1,6 +1,8 @@
 # Insertion sort
 ```toc
 ```
+<mark style="background: #FFF3A3A6;">TODO: da fare preudocodice in latex</mark>
+
 ---
 *Insertion sort* è uno degli algoritmi di ordinamento più semplici, basato sui confronti.
 
