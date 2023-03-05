@@ -7,17 +7,15 @@
 *Insertion sort* è uno degli algoritmi di ordinamento più semplici, basato sui confronti.
 
 ## Pseudocodice
-
-``` bash
-for i=2 to lenght[A] do
-	key = A[i]
-	# Inserisce A[i] nella sequenza ordinata A[1 ... i-1]
-	j = j-1
-	while j>0 and A[j]>key do
-			A[j+1] = A[j]
-			j = j - 1
-	A[j+1] = key
-```
+$\text{INSERTION-SORT}(A,\,n):$
+	**for** $i \leftarrow 2$ **to** $\text{lenght}[A]$ **do**
+		$\text{key} \leftarrow A[i]$ <br>
+		// Inserisce A[i] nella sequenza ordinata A[1 ... i-1]
+		$j \leftarrow j-1$
+		**while** $j>0$ and $A[j]>key$ **do**
+			$A[j+1] \leftarrow A[j]$
+			$j \leftarrow j - 1$
+		$A[j+1] \leftarrow \text{key}$
 
 ## Analisi computazionale
 Nella soluzione non teniamo traccia del costo degli assegnamenti ma solo del numero di **letture/scritture** in memoria e di **operazioni** effettuate (confronti, somme, decrementi, $\ldots$ ). 

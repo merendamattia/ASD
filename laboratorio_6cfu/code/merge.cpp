@@ -5,14 +5,15 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <unistd.h>
 using namespace std;
 
-// compilazione: g++ lezione2-5-merge_sort-dot.c
+// compilazione: g++ merge_sort.c
 //
 // Obiettivo: disegnare la sequenza di ordinamenti effettuata e la struttura delle chiamate ricorsive
 //   --> 1 Creazione nodi e numerazione univoca per tracciare la ricorsione
 //   --> 2 Preparazione disegno con Graphviz dot
-//   --> 3 Nodo che descrive il sotto-array corrente (in verde conto l'ordine in cui e' chiamata la attività)
+//   --> 3 Nodo che descrive il sotto-array corrente (in verde conto l'ordine in cui e' chiamata l'attività)
 
 // esecuzioni (per osservare struttura ricorsiva)
 // ./a.out 15 -graph; dot graph.dot -Tpdf -o graph.pdf
@@ -27,12 +28,13 @@ int ct_cmp = 0;
 int max_dim = 0;
 int ntests = 1;
 int ndiv = 1;
-int details = 0;
+bool details = false;
 int graph = 0;
 
 int n = 0; /// dimensione dell'array
 int global_count_recursion = 0;
 
+string output_path;
 ofstream output_graph;
 
 void print_array(int *A, int dim) {
@@ -126,10 +128,10 @@ void merge_sort(int *A, int p, int r, int *L, int *R) {
             print_array_graph(A, q + 1, r, "node_after");
             /// disegna arco p_q -> p_r
             output_graph << "node_after" << p << "_" << q << " -> ";
-            output_graph << "node_after" << p << "_" << r << "\n";
+            output_graph << "node_after" << p << "_" << r << endl;
             /// disegna arco q+1_r -> p_r
             output_graph << "node_after" << q + 1 << "_" << r << " -> ";
-            output_graph << "node_after" << p << "_" << r << "\n";
+            output_graph << "node_after" << p << "_" << r << endl;
         }
 
         merge(A, p, q, r, L, R);
@@ -143,36 +145,63 @@ void merge_sort(int *A, int p, int r, int *L, int *R) {
     }
 }
 
+void print_usage(char **argv) {
+    cerr << "Usage: " << argv[0] << " max-dim [Options]\n";
+        cerr << "   max-dim: specifica la massima dimensione n del problema\n";
+        cerr << "Options:\n";
+        cerr << "  -d=<int>: Specifica quali dimensioni n del problema vengono lanciate in sequenza [default: 1] \n";
+        cerr << "            n = k * max-dim / d, k=1 .. d\n";
+        cerr << "  -t=<int>: Specifica quanti volte viene lanciato l'algoritmo per una specifica dimensione n [default: 1]\n";
+        cerr << "            Utile nel caso in cui l'input viene inizializzato in modo random\n";
+        cerr << "  -v [verbose]: Abilita stampe durante l'esecuzione dell'algoritmo\n";
+        cerr << "  -g [graph]: creazione file di dot con il grafo dell'esecuzione (forza d=1 t=1)\n";
+        cerr << "  -o=[outputh path]: specifica un path per il file di dot\n";
+}
+
 int parse_cmd(int argc, char **argv) {
-    /// controllo argomenti
     if (argc < 2) {
-        cout << "Usage: " << argv[0] << " max-dim [Options]\n";
-        cout << "   max-dim: specifica la massima dimensione n del problema\n";
-        cout << "Options:\n";
-        cout << "  -d=<int>: Specifica quali dimensioni n del problema vengono lanciate in sequenza [default: 1] \n";
-        cout << "            n = k * max-dim / d, k=1 .. d\n";
-        cout << "  -t=<int>: Specifica quanti volte viene lanciato l'algoritmo per una specifica dimensione n [default: 1]\n";
-        cout << "            Utile nel caso in cui l'input viene inizializzato in modo random\n";
-        cout << "  -verbose: Abilita stampe durante l'esecuzione dell'algoritmo\n";
-        cout << "  -graph: creazione file di dot con il grafo dell'esecuzione (forza d=1 t=1)\n";
+        print_usage(argv);
         return 1;
     }
 
-    /// parsing argomento
-    max_dim = atoi(argv[1]);
-
-    for (int i = 2; i < argc; i++) {
-        if (argv[i][1] == 'd')
-            ndiv = atoi(argv[i] + 3);
-        if (argv[i][1] == 't')
-            ntests = atoi(argv[i] + 3);
-        if (argv[i][1] == 'v')
-            details = 1;
-        if (argv[i][1] == 'g') {
+    int c;
+    while ((c = getopt(argc, argv, ":d:t:o:vg")) != -1) {
+        switch (c) {
+        case 'v':
+            details = true;
+            break;
+        case 'g':
             graph = 1;
             ndiv = 1;
             ntests = 1;
+            break;
+        case 'd':
+            ndiv = atoi(optarg);
+            break;
+        case 't':
+            ntests = atoi(optarg);
+            break;
+        case 'o':
+            output_path = string(optarg);
+            break;
+        case ':':
+            cerr << "Option -" << (char)optopt << " needs an argument." << endl;
+            print_usage(argv);
+            return 1;
+        case '?':
+            cerr << "Unknown option -" << (char)optopt << endl;
+            print_usage(argv);
+            return 1;
+        default:
+            break;
         }
+    }
+
+    max_dim = atoi(argv[optind]);
+
+    if (ndiv > max_dim) {
+        cerr << "-d argument must be less or equal to max-dim" << endl;
+        return 1;
     }
 
     return 0;
@@ -183,6 +212,7 @@ int main(int argc, char **argv) {
     int *A;
     int *L; /// usato come buffer di appoggio
     int *R; /// usato come buffer di appoggio
+    output_path = "graph.dot";
 
     if (parse_cmd(argc, argv))
         return 1;
@@ -196,7 +226,12 @@ int main(int argc, char **argv) {
     srand((unsigned)time(NULL));
 
     if (graph) {
-        output_graph.open("graph.dot");
+        output_graph.open(output_path);
+        if (!output_graph.is_open()) {
+            cerr << "Impossibile aprire il file di output" << endl;
+            cerr << "Path: " << output_path << endl;
+            return 1;
+        }
         /// preparo header
         output_graph << "digraph g" << endl;
         output_graph << "{ " << endl;
@@ -218,7 +253,6 @@ int main(int argc, char **argv) {
 
         //// lancio ntests volte per coprire diversi casi di input random
         for (test = 0; test < ntests; test++) {
-
             /// inizializzazione array: numeri random con range dimensione array
             for (i = 0; i < n; i++) {
                 // if (graph)
@@ -267,8 +301,8 @@ int main(int argc, char **argv) {
         /// preparo footer e chiudo file
         output_graph << "}" << endl;
         output_graph.close();
-        cout << " File graph.dot scritto" << endl
-             << "Creare il grafo con: dot graph.dot -Tpdf -o graph.pdf" << endl;
+        cout << " File " << output_path << " scritto" << endl
+             << "Creare il grafo con: dot " << output_path << " -Tpdf -o graph.pdf" << endl;
     }
 
     delete[] A;
