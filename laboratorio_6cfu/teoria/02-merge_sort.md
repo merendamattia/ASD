@@ -3,7 +3,7 @@
 ```
 --- 
 
-Il Merge Sort si basa sul metodo *"Divide et Impera"*: suddividiamo il problema principale in vari sotto-problemi, simili al problema originale, ma di dimensioni più piccole. Risolviamo questi sotto-problemi ricorsivamente. 
+Il Merge Sort si basa sul metodo *"Divide et Impera"*: suddividiamo il problema principale in vari sotto-problemi, simili al problema originale, ma di dimensioni più piccole. Risolviamo questi sotto-problemi ricorsivamente.
 
 Il modello teorico del Merge Sort può essere descritto come segue:
 1. <mark style="background: #FFF3A3A6;">Divide:</mark> la lista non ordinata viene divisa in due parti uguali, o quasi uguali, fino a quando ogni parte non può più essere divisa in parti più piccole.
@@ -109,3 +109,7 @@ _[Torna all'indice](#merge%20sort)_
 ![[common_merge.gif]]
 
 _[Torna all'indice](#merge%20sort)_
+
+--- 
+## Curiosità storica
+La prima versione dell'algoritmo fu elaborata da [John Von Neumann](https://en.wikipedia.org/wiki/John_von_Neumann) nel 1945; nello stesso periodo ne ricavò un programma (23 pagine a inchiostro) eseguibile sull'[EDVAC](https://it.wikipedia.org/wiki/EDVAC), il primo computer elettronico ad implementare l'architettura da lui inventata e che ancora oggi viene utilizzata nei moderni PC.
