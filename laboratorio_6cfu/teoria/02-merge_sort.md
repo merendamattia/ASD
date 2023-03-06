@@ -105,8 +105,8 @@ _[Torna all'indice](#merge%20sort)_
 
 ## Animazioni
 
-![[worst_merge.gif]]
-![[common_merge.gif]]
+![[merge_worst.gif]]
+![[merge_common.gif]]
 
 _[Torna all'indice](#merge%20sort)_
 

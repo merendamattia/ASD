@@ -60,8 +60,8 @@ _[Ritorna all'indice](#insertion%20sort)_
 
 ## Animazioni
 
-![[common_insertion.gif]]
-![[worst_insertion.gif]]
+![[insertion_common.gif]]
+![[insertion_worst.gif]]
 
 _[Ritorna all'indice](#insertion%20sort)_
 
