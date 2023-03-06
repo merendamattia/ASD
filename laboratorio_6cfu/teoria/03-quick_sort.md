@@ -27,10 +27,10 @@ Ci sono diversi casi peggiori:
 
 
 ### Crescente
-<mark style="background: #FFF3A3A6;">TODO: aggiungi pdf grafico</mark>
+<mark style="background: #FFF3A3A6;">TODO: aggiungi pdf grafico e animazione con 16 elementi</mark>
 
 ### Decrescente
-<mark style="background: #FFF3A3A6;">TODO: aggiungi pdf grafico</mark>
+<mark style="background: #FFF3A3A6;">TODO: aggiungi pdf grafico e animazione con 16 elementi</mark>
 
 ## Vantaggi
 A differenza del Merge Sort, questo algoritmo non utilizza strutture dati di supporto e ordina (chiamando `partition()`) prima di richiamare ricorsivamente Quick Sort.
