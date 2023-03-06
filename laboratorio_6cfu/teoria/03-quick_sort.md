@@ -36,23 +36,4 @@ Ci sono diversi casi peggiori:
 A differenza del Merge Sort, questo algoritmo non utilizza strutture dati di supporto e ordina (chiamando `partition()`) prima di richiamare ricorsivamente Quick Sort.
 
 ## Animazioni 
-
-_Caso peggiore, ordine crescente_
-
-
-![[quick_cre.gif]]
-
-_Caso peggiore, ordine decrescente_
-
-![[quick_cre.gif]]
-
-_Caso elementi simili_
-
-![[quick_sim.gif]]
-
-
-_Caso comune_
-
-![[quick_common.gif]]
-
-![[quick_common_many.gif]]
+<mark style="background: #FFF3A3A6;">TODO: da aggiungere</mark>
