@@ -15,14 +15,14 @@ _[Torna all'indice](#merge%20sort)_
 ---
 
 ## Pseudocodice
-$\text{Merge-Sort}(A,\,p,\,r):$
+$\text{MERGE-SORT}(A,\,p,\,r):$
 	**if** $p<r$ **then**
 		$q \leftarrow \lfloor{ \frac{p+q}{2} }\rfloor$
 		$\text{Merge-Sort}(A,\,p,\,q)$
 		$\text{Merge-Sort}(A,\,q+1,\,r)$
 		$\text{Merge}(A,\,p,\,q,\,r)$
 
-$\text{Merge}(A,\,p,\,q,\,r):$
+$\text{MERGE}(A,\,p,\,q,\,r):$
 	$n_1 \leftarrow q-p+1$
 	$n_2 \leftarrow r-q$
 	$\text{crea gli array } L[1 \dots n_1+1] \text{ e } R[1 \dots n_2+1]$ <br>
