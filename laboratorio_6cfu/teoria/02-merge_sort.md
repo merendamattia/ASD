@@ -18,9 +18,9 @@ _[Torna all'indice](#merge%20sort)_
 $\text{MERGE-SORT}(A,\,p,\,r):$
 	**if** $p<r$ **then**
 		$q \leftarrow \lfloor{ \frac{p+q}{2} }\rfloor$
-		$\text{Merge-Sort}(A,\,p,\,q)$
-		$\text{Merge-Sort}(A,\,q+1,\,r)$
-		$\text{Merge}(A,\,p,\,q,\,r)$
+		$\text{MERGE-SORTt}(A,\,p,\,q)$
+		$\text{MERGE-SORT}(A,\,q+1,\,r)$
+		$\text{MERGE}(A,\,p,\,q,\,r)$
 
 $\text{MERGE}(A,\,p,\,q,\,r):$
 	$n_1 \leftarrow q-p+1$
