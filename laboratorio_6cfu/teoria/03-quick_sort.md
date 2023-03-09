@@ -99,6 +99,7 @@ Un esempio grafico:
 
 ## Quick Sort a tre vie
 <mark style="background: #FFF3A3A6;">TODO: lo faremo a lezione il 09/03/2023</mark>
+https://www.programiz.com/dsa/quick-sort
 
 [_Torna all'indice_](#quick%20sort)
 
