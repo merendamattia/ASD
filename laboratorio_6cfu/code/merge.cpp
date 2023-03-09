@@ -34,7 +34,7 @@ int graph = 0;
 int n = 0; /// dimensione dell'array
 int global_count_recursion = 0;
 
-string output_path;
+string output_path = "graph.dot";
 ofstream output_graph;
 
 void print_array(int *A, int dim) {
@@ -212,7 +212,6 @@ int main(int argc, char **argv) {
     int *A;
     int *L; /// usato come buffer di appoggio
     int *R; /// usato come buffer di appoggio
-    output_path = "graph.dot";
 
     if (parse_cmd(argc, argv))
         return 1;
