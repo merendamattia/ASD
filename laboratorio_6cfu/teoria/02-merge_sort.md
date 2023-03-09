@@ -15,6 +15,7 @@ _[Torna all'indice](#merge%20sort)_
 ---
 
 ## Pseudocodice
+<!--
 $\text{MERGE-SORT}(A,\,p,\,r):$
 	**if** $p<r$ **then**
 		$q \leftarrow \lfloor{ \frac{p+q}{2} }\rfloor$
@@ -41,6 +42,8 @@ $\text{MERGE}(A,\,p,\,q,\,r):$
 		**else**
 			$A[k] \leftarrow R[j]$
 			$j \leftarrow j+1$
+-->
+![[merge_pseudocodice.png]]
 
 _[Torna all'indice](#merge%20sort)_
 
