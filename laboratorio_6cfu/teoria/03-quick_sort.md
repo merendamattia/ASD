@@ -1,9 +1,10 @@
 # Quick Sort
 ```toc
 ```
+---
 
 ## Pseudocodice
-<mark style="background: #FFF3A3A6;">TODO: da fare</mark>
+![[quicksort_pseudocodice.png]]
 $i$ indica la lunghezza del sotto-array (ultima cella valida dell'array con elementi più piccoli del _pivot_)
 
 [_Torna all'indice_](#quick%20sort)
@@ -48,9 +49,9 @@ Un esempio grafico di un albero sbilanciato:
 
 ## Casi peggiori
 Ci sono diversi casi peggiori:
-1. [Se l'array è ordinato in ordine crescente (quindi sarebbe già ordinato).](#crescente)
-2. [Se l'array è ordinato in ordine decrescente.](#decrescente)
-3. [Se l'array contiene valori ripetuti.](#valori%20ripetuti)
+1. [Array ordinato in ordine crescente (quindi sarebbe già ordinato).](#crescente)
+2. [Aarray ordinato in ordine decrescente.](#decrescente)
+3. [Array contenente valori ripetuti.](#valori%20ripetuti)
 
 ### Crescente
 Nel caso in cui l'array è già ordinato in ordine crescente e il pivot iniziale viene scelto come ultimo elemento dell'array, ad ogni iterazione della ricorsione il pivot sarà il massimo degli elementi restanti, e la partizione del sottoarray non dividerà l'array in due parti approssimativamente uguali. Questo comporta che una delle due parti sarà vuota e l'altra contenente $n-1$ elementi. In questo caso il Quick Sort avrà una complessità di $O(n^2)$.

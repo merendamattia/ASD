@@ -5,6 +5,7 @@
 *Insertion sort* è uno degli algoritmi di ordinamento più semplici, basato sui confronti.
 
 ## Pseudocodice
+<!--
 $\text{INSERTION-SORT}(A,\,n):$
 	**for** $i \leftarrow 2$ **to** $\text{lenght}[A]$ **do**
 		$\text{key} \leftarrow A[i]$ <br>
@@ -14,6 +15,8 @@ $\text{INSERTION-SORT}(A,\,n):$
 			$A[j+1] \leftarrow A[j]$
 			$j \leftarrow j - 1$
 		$A[j+1] \leftarrow \text{key}$
+-->
+![[insertion_pseudocodice.png | 450]]
 
 ## Analisi computazionale
 Nella soluzione non teniamo traccia del costo degli assegnamenti ma solo del numero di **letture/scritture** in memoria e di **operazioni** effettuate (confronti, somme, decrementi, $\ldots$ ). 
