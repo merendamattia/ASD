@@ -395,8 +395,8 @@ int main(int argc, char **argv) {
             /// inizializzazione array: numeri random con range dimensione array
             for (i = 0; i < n; i++) {
                 // A[i] = n - i;
-                A[i]= rand() % (n*10);
-                // A[i] = rand() % 6;
+                // A[i]= rand() % (n*10);
+                A[i] = rand() % 10;
 
                 if (comparison)
                     C[i] = A[i];
