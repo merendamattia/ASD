@@ -112,10 +112,3 @@ In generale, il quicksort a tre vie è più efficiente del quicksort tradizional
 [Un esempio grafico reale (pdf)](obsidian://open?vault=ASD&file=laboratorio_6cfu%2Fdata%2Fpdf%2Fquick_sort_3_vie.pdf)
 
 [_Torna all'indice_](#quick%20sort)
-
-
-
-
-
-
-
