@@ -10,6 +10,8 @@ Tipicamente, nelle soluzioni viste a lezione non teniamo traccia del costo degli
 ## Complessità algoritmi caso medio
 - Insertion Sort: $O(n^2)$
 - Merge Sort: $O\left({ n \cdot \log(n) }\right)$
+- Quicksort: $O\left({ n \cdot \log(n) }\right)$
+- Counting Sort: $O(n)$
 
 ---
 
