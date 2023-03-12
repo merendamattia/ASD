@@ -216,7 +216,7 @@ int main(int argc, char **argv) {
             cerr << "Path: " << output_path << endl;
             return 1;
         }
-        /// preparo header
+        // preparo header
         output_graph << "digraph g" << endl;
         output_graph << "{ rankdir = TB;" << endl;
         output_graph << "node [shape=plaintext]" << endl;
@@ -294,7 +294,7 @@ int main(int argc, char **argv) {
         /// preparo footer e chiudo file
         output_graph << "}" << endl;
         output_graph.close();
-        cout << " File " << output_path << " scritto" << endl
+        cout << "File " << output_path << " scritto" << endl
              << "Creare il grafo con: dot " << output_path << " -Tpdf -o graph.pdf" << endl;
     }
 

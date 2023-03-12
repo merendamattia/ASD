@@ -154,6 +154,7 @@ int main(int argc, char **argv) {
 
     if (graph) {
         output_graph.open(output_path);
+        
         if (!output_graph.is_open()) {
             cerr << "Impossibile aprire il file di output" << endl;
             cerr << "Path: " << output_path << endl;
@@ -230,7 +231,7 @@ int main(int argc, char **argv) {
         /// preparo footer e chiudo file
         output_graph << "}" << endl;
         output_graph.close();
-        cout << " File " << output_path << " scritto" << endl
+        cout << "File " << output_path << " scritto" << endl
              << "Creare il grafo con: dot " << output_path << " -Tpdf -o graph.pdf" << endl;
     }
 
