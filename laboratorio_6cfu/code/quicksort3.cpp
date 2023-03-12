@@ -414,8 +414,9 @@ int main(int argc, char **argv) {
 
             quick_sort(A, 0, n - 1);
             if (comparison) {
-                cout << "[1]:\tct_swap,ct_cmp" << endl;
-                cout << "[1]:\t" << ct_swap << "," << ct_cmp << endl;
+                cout << "[1]:\tct_swap,ct_cmp,ct_swap+ct_cmp" << endl;
+                cout << "[1]:\t" << ct_swap << ',' << ct_cmp << ',' << ct_swap
+                + ct_cmp << endl;
             }
 
             if (comparison) {
@@ -424,7 +425,8 @@ int main(int argc, char **argv) {
                 quick_sort_v_2(C, 0, n - 1);
 
                 cout << "[2]:\tct_swap,ct_cmp" << endl;
-                cout << "[2]:\t" << ct_swap << "," << ct_cmp << endl;
+                cout << "[2]:\t" << ct_swap << "," << ct_cmp << ',' << ct_swap
+                + ct_cmp << endl;
             }
 
             if (graph)
