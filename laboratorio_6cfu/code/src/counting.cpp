@@ -2,8 +2,7 @@
     compilazione: 
         g++ counting.cpp ordinamento.cpp -I../include && \
         ./a.out 10 -graph && \ 
-        dot graph.dot -Tpdf -o graph.pdf && \
-        open graph.pdf
+        dot graph.dot -Tpdf -o graph.pdf
 
     Obiettivo:
         1) analisi esecuzione ordine crescente
@@ -193,7 +192,13 @@ int main(int argc, char **argv) {
     srand((unsigned)time(NULL));
 
     if (graph) {
-        output_graph.open("graph.dot");
+        output_graph.open(output_path);
+
+        if (!output_graph.is_open()) {
+            cerr << "Impossibile aprire il file di output" << endl;
+            cerr << "Path: " << output_path << endl;
+            return 1;
+        }
         // preparo header
         output_graph << "digraph g" << endl;
         output_graph << "{ " << endl;
@@ -257,11 +262,11 @@ int main(int argc, char **argv) {
     } // termine del loop che lavora con array di dimensione n
 
     if (graph) {
-        // preparo footer e chiudo file
+        /// preparo footer e chiudo file
         output_graph << "}" << endl;
         output_graph.close();
-        cout << " File graph.dot scritto" << endl
-             << "Creare il grafo con: dot graph.dot -Tpdf -o graph.pdf" << endl;
+        cout << "File " << output_path << " scritto" << endl
+             << "Creare il grafo con: dot " << output_path << " -Tpdf -o graph.pdf" << endl;
     }
 
     delete[] A;
