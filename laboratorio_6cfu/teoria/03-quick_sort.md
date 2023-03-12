@@ -60,8 +60,7 @@ Infatti, se ad ogni iterazione il pivot è il massimo degli elementi restanti, a
 
 ![[quick_sort_crescente.gif | 450]]
 
-Un esempio grafico:
-![[quick_sort_crescente.pdf]]
+[Un esempio grafico reale (pdf)](obsidian://open?vault=ASD&file=laboratorio_6cfu%2Fdata%2Fpdf%2Fquick_sort_crescente.pdf)
 
 [_Torna all'indice_](#quick%20sort)
 
@@ -72,8 +71,7 @@ Nel caso in cui l'array è ordinato in ordine decrescente e il pivot iniziale vi
 
 ![[quick_sort_decrescente.gif | 450]]
 
-Un esempio grafico:
-![[quick_sort_decrescente.pdf]]
+[Un esempio grafico reale (pdf)](obsidian://open?vault=ASD&file=laboratorio_6cfu%2Fdata%2Fpdf%2Fquick_sort_decrescente.pdf)
 
 [_Torna all'indice_](#quick%20sort)
 
@@ -90,23 +88,27 @@ Per minimizzare questo problema, esistono diverse strategie per la scelta del pi
 
 ![[quick_sim.gif | 450]]
 
-Un esempio grafico:
-![[quick_sort_tanti_pivot_uguali.pdf]]
+[Un esempio grafico reale (pdf)](obsidian://open?vault=ASD&file=laboratorio_6cfu%2Fdata%2Fpdf%2Fquick_sort_tanti_pivot_uguali.pdf)
 
 [_Torna all'indice_](#quick%20sort)
 
 ---
 
 ## Quick Sort a tre vie
-<mark style="background: #FFF3A3A6;">TODO: lo faremo a lezione il 09/03/2023</mark>
-https://www.programiz.com/dsa/quick-sort
+Il quicksort a tre vie (noto anche come [Dutch national flag](https://en.wikipedia.org/wiki/Dutch_national_flag_problem) o "sedgewick") è una variante del classico algoritmo di ordinamento quicksort.
+
+La principale differenza tra il quicksort a tre vie e il quicksort tradizionale è che quest'ultimo divide l'array in due parti, una contenente elementi più piccoli o uguali al pivot e l'altra contenente elementi più grandi del pivot, mentre <mark style="background: #FFB86CA6;">il quicksort a tre vie divide l'array in tre parti:</mark> una contenente elementi più piccoli del pivot, una contenente elementi uguali al pivot e una contenente elementi più grandi del pivot.
+
+Il quicksort a tre vie <mark style="background: #BBFABBA6;">è particolarmente efficace quando l'array contiene molti elementi duplicati</mark>, poiché evita il rischio di creare una delle due partizioni vuota o contenente pochi elementi. Inoltre, il quicksort a tre vie può essere molto efficiente quando gli elementi dell'array non sono uniformemente distribuiti, come ad esempio quando l'array contiene molti valori uguali o quando gli elementi sono già parzialmente ordinati.
+
+L'algoritmo funziona in modo simile al quicksort tradizionale, ma con una logica di partizione leggermente diversa. Inizialmente viene selezionato un pivot dall'array, di solito il primo o l'ultimo elemento, e l'array viene diviso in tre parti in base al valore del pivot. Successivamente, l'algoritmo viene applicato ricorsivamente a ciascuna delle tre parti fino a quando l'array è completamente ordinato.
+
+In generale, il quicksort a tre vie è più efficiente del quicksort tradizionale quando ci sono molti valori duplicati nell'array, ma ha una complessità simile in altri casi.
+
+<mark style="background: #FFF3A3A6;">TODO: da aggiungere gif animazione @simonecolli</mark>
+
+> Maggiori dettagli: */code/quicksort_3way.cpp*
+
+[Un esempio grafico reale (pdf)](obsidian://open?vault=ASD&file=laboratorio_6cfu%2Fdata%2Fpdf%2Fquick_sort_3_vie.pdf)
 
 [_Torna all'indice_](#quick%20sort)
-
-
-
-
-
-
-
-
