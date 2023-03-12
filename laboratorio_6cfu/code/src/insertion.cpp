@@ -1,32 +1,36 @@
 /*
- * Compilazione: g++ insertion.cpp -o insertion
- * Esecuzione: ./insertion 100 1 (100 è la dimensione dell'array, 1 è il valore della variabile "details")
- * Per visualizzare il tempo di esecuzione: time ./insertion 100 1
+	Compilazione: 
+		g++ insertion.cpp ordinamento.cpp -I../include
+	Esecuzione: 
+		./insertion 100 1 (100 è la dimensione dell'array, 1 è il valore della variabile "details")
+	Per visualizzare il tempo di esecuzione: 
+		time ./insertion 100 1
 */
 
-#include <iostream>
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <time.h>
 
+#include "../include/ordinamento.hh"
+
 using namespace std;
-int ct_swap = 0;
-int ct_op = 0;
-bool details = false;
 
-
-// Effettua lo swap del contenuto di due variabili intere
-void swap(int &a, int &b){
-	int temp = a;
-	a = b;
-	b = temp;
-	ct_swap++;
-}
-
-// Stampa array
-void print_array(int *A, int n){ 
-	for (int i = 0; i < n; i++)
-		cout << A[i] << " ";
-	cout << endl;
-}
+Stat stat; // Per le statistiche
+int& ct_swap = stat.ct_swap;
+int& ct_cmp = stat.ct_cmp;
+int& ct_read = stat.ct_read;
+int& ct_op = stat.ct_op;
+int& n = stat.n;
+int& max_dim = stat.max_dim;
+int& ntests = stat.ntests;
+int& ndiv = stat.ndiv;
+bool& details = stat.details;
+bool& graph = stat.graph;
+bool& comparison = stat.comparison;
+string& output_path = stat.output_path;
+ofstream& output_graph = stat.output_graph;
 
 // Inizializza l'array di interi
 void populate_array(int *A, int n){
@@ -42,7 +46,7 @@ void insertion_sort(int* A, int dim) {
 
 	for (i=1; i<dim; i++)
 		for (j=i-1; j>=0 && A[j]>A[j+1]; j--)
-			swap(A[j], A[j+1]);
+			swap(A[j], A[j+1], ct_swap);
 }
 
 // Implementazione con debug
@@ -57,7 +61,7 @@ void insertion_sort_debug(int *A, int dim) {
 			
 			if(A[j] > A[j + 1]){
 				ct_op += 2;	// 2 letture in memoria (A[j] e A[j + 1]) + chiamata funzione swap
-				swap(A[j], A[j + 1]);
+				swap(A[j], A[j + 1], ct_swap);
 			}	
 		}
 		// ct_op++; // test finale uscita dal for (j < 0)
@@ -71,27 +75,15 @@ void insertion_sort_debug(int *A, int dim) {
 }
 
 int main(int argc, char **argv){
-	if (argc < 2 || argc > 3) {
-		cout << "Usage: " << argv[0] << " dim-array [details=0/1]" << endl;
-		return 1;
-	}
+	if (parse_cmd(argc, argv, stat))
+        return 1;
 
-	int n = atoi(argv[1]);
-
-	if (n <= 0) {
-		cerr << "Invalid argument, dim must be > 0" << endl;
-		return 1;
-	}
-
-	if (argc == 3)
-        details = atoi(argv[2]);
-
-	int* A = new int[n]; // init array
+	int* A = new int[max_dim]; // init array
 		
     srand((unsigned)time(NULL)); // init random
 
-	populate_array(A, n);
-	insertion_sort_debug(A, n);
+	populate_array(A, max_dim);
+	insertion_sort_debug(A, max_dim);
 	//print_array(A, n);
 
 	cout << "Totale swap: " << ct_swap << endl;

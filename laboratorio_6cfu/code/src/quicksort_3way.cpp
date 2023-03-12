@@ -1,47 +1,41 @@
-#include <fstream>
-#include <iostream>
+/* 
+    compilazione: 
+        g++ quicksort_3way.cpp ordinamento.cpp -I../include
+
+    Obiettivo:
+        osservazione con input random con range molto limitato (es. rand() % (n/3) )
+        quicksort a tre vie.
+        https://en.wikipedia.org/wiki/Dutch_national_flag_problem
+
+        ./a.out 16 -graph; dot graph.dot -Tpdf -o graph.pdf
+
+    confrontare il numero di swap e confronti usando 3 vie o partition semplice
+*/
+
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include <unistd.h>
+
+#include "../include/ordinamento.hh"
+
 using namespace std;
 
-// compilazione: g++ lezione4-8-quicksort3-dot.c
-//
-// Obiettivo:
+Stat stat; // Per le statistiche
+int& ct_swap = stat.ct_swap;
+int& ct_cmp = stat.ct_cmp;
+int& n = stat.n;
+int& max_dim = stat.max_dim;
+int& ntests = stat.ntests;
+int& ndiv = stat.ndiv;
+bool& details = stat.details;
+bool& graph = stat.graph;
+bool& comparison = stat.comparison;
+string& output_path = stat.output_path;
+ofstream& output_graph = stat.output_graph;
 
-// osservazione con input random con range molto limitato (es. rand() % (n/3) )
-// quicksort a tre vie
-/// https://en.wikipedia.org/wiki/Dutch_national_flag_problem
-
-// ./a.out 16 -graph; dot graph.dot -Tpdf -o graph.pdf
-
-// confrontare il numero di swap e confronti usando 3 vie o partition semplice
-
-int ct_swap = 0;
-int ct_cmp = 0;
-
-int max_dim = 0;
-int ntests = 1;
-int ndiv = 1;
-int details = 0;
-int graph = 0;
-bool comparison = false;
-
-int n = 0; /// dimensione dell'array
-
-/// file di output per grafo
-string output_path = "graph.dot";
-ofstream output_graph;
-
-void print_array(int *A, int dim) {
-    for (int j = 0; j < dim; j++) {
-        printf("%d ", A[j]);
-    }
-    printf("\n");
-}
+int global_count_recursion = 0;
 
 void print_array_graph(int *A, int p, int r, string s, int pivot) {
     /// prepara il disegno dell'array A ed il suo contenuto dall'indice a all'indice b inclusi
@@ -51,7 +45,7 @@ void print_array_graph(int *A, int p, int r, string s, int pivot) {
     /// uso codice HTML per creare una tabella con il contenuto dell'array
 
     // return ;
-
+     
     output_graph << s << p << "_" << r << " [label=<" << endl
                  << "<TABLE BORDER=\"0\" CELLBORDER=\"1\" CELLSPACING=\"0\" ";
     if (pivot)
@@ -62,18 +56,6 @@ void print_array_graph(int *A, int p, int r, string s, int pivot) {
     }
     output_graph << "</TR> </TABLE>>];" << endl;
 }
-
-void swap(int &a, int &b) {
-    int tmp = a;
-    a = b;
-    b = tmp;
-    /// aggiorno contatore globale di swap
-    ct_swap++;
-}
-
-struct my_pair {
-    int x, y;
-};
 
 /*
     Questa versione di partition a tre vie è stata scritta da @manueldiagostino
@@ -89,18 +71,18 @@ my_pair partition3_v_2(int* A, int p, int r) {
 
 		if (A[k]<x) {
 			++ct_cmp;
-			swap(A[j+1], A[k]);
-			swap(A[i+1], A[j+1]);
+			swap(A[j+1], A[k], ct_swap);
+			swap(A[i+1], A[j+1], ct_swap);
 			++i;
 			++j;
 		} else if (A[k]==x) {
 			++ct_cmp;
-			swap(A[j+1], A[k]);
+			swap(A[j+1], A[k], ct_swap);
 			++j;
 		}
 	}
 
-  	swap(A[j+1], A[r]);
+  	swap(A[j+1], A[r], ct_swap);
 
 
 	res.x = i+1;
@@ -123,6 +105,8 @@ my_pair partition3(int *A, int p, int r) {
     int j = p;
     int k = r;
 
+    
+
     /// situazione iniziale
     if (graph) {
         output_graph << "<TR>";
@@ -143,12 +127,12 @@ my_pair partition3(int *A, int p, int r) {
         
         if (A[j] < x) {
             ++ct_cmp;
-            swap(A[i], A[j]);
+            swap(A[i], A[j], ct_swap);
             i++;
             j++;
         } else if (A[j] > x) {
             ct_cmp+=2;
-            swap(A[j], A[k]);
+            swap(A[j], A[k], ct_swap);
             k--;
         } else
             j++;
@@ -284,71 +268,6 @@ void quick_sort(int *A, int p, int r) {
         output_graph << "node_after" << p << "_" << r << endl;
     }
 }
-void print_usage(char **argv) {
-    cerr << "Usage: " << argv[0] << " max-dim [Options]\n";
-        cerr << "   max-dim: specifica la massima dimensione n del problema\n";
-        cerr << "Options:\n";
-        cerr << "  -d=<int>: Specifica quali dimensioni n del problema vengono lanciate in sequenza [default: 1] \n";
-        cerr << "            n = k * max-dim / d, k=1 .. d\n";
-        cerr << "  -t=<int>: Specifica quanti volte viene lanciato l'algoritmo per una specifica dimensione n [default: 1]\n";
-        cerr << "            Utile nel caso in cui l'input viene inizializzato in modo random\n";
-        cerr << "  -v [verbose]: Abilita stampe durante l'esecuzione dell'algoritmo\n";
-        cerr << "  -g [graph]: creazione file di dot con il grafo dell'esecuzione (forza d=1 t=1)\n";
-        cerr << "  -c [comparison]: compara la partition a tre vie classica con un'altra\n";
-        cerr << "  -o=[outputh path]: specifica un path per il file di dot\n";
-}
-
-int parse_cmd(int argc, char **argv) {
-    if (argc < 2) {
-        print_usage(argv);
-        return 1;
-    }
-
-    int c;
-    while ((c = getopt(argc, argv, ":d:t:o:vgc")) != -1) {
-        switch (c) {
-        case 'v':
-            details = true;
-            break;
-        case 'c':
-            comparison = true;
-            break;
-        case 'g':
-            graph = 1;
-            ndiv = 1;
-            ntests = 1;
-            break;
-        case 'd':
-            ndiv = atoi(optarg);
-            break;
-        case 't':
-            ntests = atoi(optarg);
-            break;
-        case 'o':
-            output_path = string(optarg);
-            break;
-        case ':':
-            cerr << "Option -" << (char)optopt << " needs an argument." << endl;
-            print_usage(argv);
-            return 1;
-        case '?':
-            cerr << "Unknown option -" << (char)optopt << endl;
-            print_usage(argv);
-            return 1;
-        default:
-            break;
-        }
-    }
-
-    max_dim = atoi(argv[optind]);
-
-    if (ndiv > max_dim) {
-        cerr << "-d argument must be less or equal to max-dim" << endl;
-        return 1;
-    }
-
-    return 0;
-}
 
 int main(int argc, char **argv) {
     int i, test;
@@ -356,10 +275,10 @@ int main(int argc, char **argv) {
     int *B; /// buffer per visualizzazione algoritmo
     int* C; // Per il confronto con altri algoritmi di partition
 
-    if (parse_cmd(argc, argv))
+    if (parse_cmd(argc, argv, stat))
         return 1;
 
-    /// allocazione array
+    // allocazione array
     A = new int[max_dim];
     if (comparison)
         C = new int[max_dim];
@@ -375,7 +294,7 @@ int main(int argc, char **argv) {
             cerr << "Path: " << output_path << endl;
             return 1;
         }
-        /// preparo header
+        // preparo header
         output_graph << "digraph g" << endl;
         output_graph << "{ rankdir = TB;" << endl;
         output_graph << "node [shape=plaintext]" << endl;
@@ -386,13 +305,13 @@ int main(int argc, char **argv) {
 
     // printf("Parametri: max-dim %d, d %d, t %d, verbose %d\n",max_dim,ndiv,ntests,details);
 
-    //// inizio ciclo per calcolare ndiv dimensioni di array crescenti
+    // inizio ciclo per calcolare ndiv dimensioni di array crescenti
     for (n = max_dim / ndiv; n <= max_dim; n += max_dim / ndiv) {
 
-        //// lancio ntests volte per coprire diversi casi di input random
+        // lancio ntests volte per coprire diversi casi di input random
         for (test = 0; test < ntests; test++) {
 
-            /// inizializzazione array: numeri random con range dimensione array
+            // inizializzazione array: numeri random con range dimensione array
             for (i = 0; i < n; i++) {
                 // A[i] = n - i;
                 // A[i]= rand() % (n*10);
@@ -402,7 +321,7 @@ int main(int argc, char **argv) {
                     C[i] = A[i];
             }
 
-            printf("creato array di dimensione %d\n", n);
+            cout << "creato array di dimensione " << n << endl; 
             print_array(A, n);
 
             ct_swap = 0;
@@ -414,8 +333,9 @@ int main(int argc, char **argv) {
 
             quick_sort(A, 0, n - 1);
             if (comparison) {
-                cout << "[1]:\tct_swap,ct_cmp" << endl;
-                cout << "[1]:\t" << ct_swap << "," << ct_cmp << endl;
+                cout << "[1]:\tct_swap,ct_cmp,ct_swap+ct_cmp" << endl;
+                cout << "[1]:\t" << ct_swap << ',' << ct_cmp << ',' << ct_swap
+                + ct_cmp << endl;
             }
 
             if (comparison) {
@@ -423,8 +343,9 @@ int main(int argc, char **argv) {
                 ct_cmp = 0;
                 quick_sort_v_2(C, 0, n - 1);
 
-                cout << "[2]:\tct_swap,ct_cmp" << endl;
-                cout << "[2]:\t" << ct_swap << "," << ct_cmp << endl;
+                cout << "[2]:\tct_swap,ct_cmp,ct_swap+ct_cmp" << endl;
+                cout << "[2]:\t" << ct_swap << "," << ct_cmp << ',' << ct_swap
+                + ct_cmp << endl;
             }
 
             if (graph)

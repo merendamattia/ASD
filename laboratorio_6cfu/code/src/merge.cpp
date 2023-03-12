@@ -1,48 +1,46 @@
-#include <fstream>
-#include <iostream>
+/* 
+    compilazione:
+        g++ merge.cpp ordinamento.cpp -I../include
+        
+    Obiettivo: 
+        disegnare la sequenza di ordinamenti effettuata e la struttura delle chiamate ricorsive
+        --> 1 Creazione nodi e numerazione univoca per tracciare la ricorsione
+        --> 2 Preparazione disegno con Graphviz dot
+        --> 3 Nodo che descrive il sotto-array corrente (in verde conto l'ordine in cui e' chiamata l'attività)
+
+        esecuzioni (per osservare struttura ricorsiva)
+        ./a.out 15 -graph; dot graph.dot -Tpdf -o graph.pdf
+        ./a.out 16 -graph; dot graph.dot -Tpdf -o graph.pdf
+        ./a.out 17 -graph; dot graph.dot -Tpdf -o graph.pdf
+
+        prove con array ordinato crescente, decrescente o random 
+        --> come cambia la struttura ricorsiva? 
+*/
+
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include <unistd.h>
+
+#include "../include/ordinamento.hh"
+
 using namespace std;
 
-// compilazione: g++ merge_sort.c
-//
-// Obiettivo: disegnare la sequenza di ordinamenti effettuata e la struttura delle chiamate ricorsive
-//   --> 1 Creazione nodi e numerazione univoca per tracciare la ricorsione
-//   --> 2 Preparazione disegno con Graphviz dot
-//   --> 3 Nodo che descrive il sotto-array corrente (in verde conto l'ordine in cui e' chiamata l'attività)
-
-// esecuzioni (per osservare struttura ricorsiva)
-// ./a.out 15 -graph; dot graph.dot -Tpdf -o graph.pdf
-// ./a.out 16 -graph; dot graph.dot -Tpdf -o graph.pdf
-// ./a.out 17 -graph; dot graph.dot -Tpdf -o graph.pdf
-
-// prove con array ordinato crescente, decrescente o random --> come cambia la struttura ricorsiva?
-
-int ct_swap = 0;
-int ct_cmp = 0;
-
-int max_dim = 0;
-int ntests = 1;
-int ndiv = 1;
-bool details = false;
-int graph = 0;
-
-int n = 0; /// dimensione dell'array
+Stat stat; // Per le statistiche
+int& ct_swap = stat.ct_swap;
+int& ct_cmp = stat.ct_cmp;
+int& ct_read = stat.ct_read;
+int& n = stat.n;
+int& max_dim = stat.max_dim;
+int& ntests = stat.ntests;
+int& ndiv = stat.ndiv;
+bool& details = stat.details;
+bool& graph = stat.graph;
+bool& comparison = stat.comparison;
+string& output_path = stat.output_path;
+ofstream& output_graph = stat.output_graph;
 int global_count_recursion = 0;
-
-string output_path = "graph.dot";
-ofstream output_graph;
-
-void print_array(int *A, int dim) {
-    for (int j = 0; j < dim; j++) {
-        cout << A[j] << " ";
-    }
-    cout << "\n";
-}
 
 void print_array_graph(int *A, int a, int b, string c) {
     /// prepara il disegno dell'array A ed il suo contenuto dall'indice a all'indice b inclusi
@@ -56,14 +54,6 @@ void print_array_graph(int *A, int a, int b, string c) {
         output_graph << "<TD>" << A[j] << "</TD>" << endl;
     }
     output_graph << "</TR> </TABLE>>];" << endl;
-}
-
-void swap(int &a, int &b) {
-    int tmp = a;
-    a = b;
-    b = tmp;
-    /// aggiorno contatore globale di swap
-    ct_swap++;
 }
 
 void merge(int *A, int p, int q, int r, int *L, int *R) {
@@ -145,75 +135,13 @@ void merge_sort(int *A, int p, int r, int *L, int *R) {
     }
 }
 
-void print_usage(char **argv) {
-    cerr << "Usage: " << argv[0] << " max-dim [Options]\n";
-        cerr << "   max-dim: specifica la massima dimensione n del problema\n";
-        cerr << "Options:\n";
-        cerr << "  -d=<int>: Specifica quali dimensioni n del problema vengono lanciate in sequenza [default: 1] \n";
-        cerr << "            n = k * max-dim / d, k=1 .. d\n";
-        cerr << "  -t=<int>: Specifica quanti volte viene lanciato l'algoritmo per una specifica dimensione n [default: 1]\n";
-        cerr << "            Utile nel caso in cui l'input viene inizializzato in modo random\n";
-        cerr << "  -v [verbose]: Abilita stampe durante l'esecuzione dell'algoritmo\n";
-        cerr << "  -g [graph]: creazione file di dot con il grafo dell'esecuzione (forza d=1 t=1)\n";
-        cerr << "  -o=[outputh path]: specifica un path per il file di dot\n";
-}
-
-int parse_cmd(int argc, char **argv) {
-    if (argc < 2) {
-        print_usage(argv);
-        return 1;
-    }
-
-    int c;
-    while ((c = getopt(argc, argv, ":d:t:o:vg")) != -1) {
-        switch (c) {
-        case 'v':
-            details = true;
-            break;
-        case 'g':
-            graph = 1;
-            ndiv = 1;
-            ntests = 1;
-            break;
-        case 'd':
-            ndiv = atoi(optarg);
-            break;
-        case 't':
-            ntests = atoi(optarg);
-            break;
-        case 'o':
-            output_path = string(optarg);
-            break;
-        case ':':
-            cerr << "Option -" << (char)optopt << " needs an argument." << endl;
-            print_usage(argv);
-            return 1;
-        case '?':
-            cerr << "Unknown option -" << (char)optopt << endl;
-            print_usage(argv);
-            return 1;
-        default:
-            break;
-        }
-    }
-
-    max_dim = atoi(argv[optind]);
-
-    if (ndiv > max_dim) {
-        cerr << "-d argument must be less or equal to max-dim" << endl;
-        return 1;
-    }
-
-    return 0;
-}
-
 int main(int argc, char **argv) {
     int i, test;
     int *A;
     int *L; /// usato come buffer di appoggio
     int *R; /// usato come buffer di appoggio
 
-    if (parse_cmd(argc, argv))
+    if (parse_cmd(argc, argv, stat))
         return 1;
 
     /// allocazione array

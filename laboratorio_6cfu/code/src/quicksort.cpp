@@ -1,47 +1,38 @@
-#include <fstream>
-#include <iostream>
+/* 
+    compilazione: 
+        g++ quicksort.cpp ordinamento.cpp -I../include
+    Obiettivo:
+        esecuzioni (per osservare struttura ricorsiva), sia con input random che ordine decrescente
+        ./a.out 16 -graph; dot graph.dot -Tpdf -o graph.pdf
+
+        osservazione con input random con range molto limitato (es. rand() % (n/3) )
+        molti pivot uguali ---> quicksort a tre vie
+        ./a.out 16 -graph; dot graph.dot -Tpdf -o graph.pdf
+*/
+
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include <unistd.h>
+
+#include "../include/ordinamento.hh"
 
 using namespace std;
 
-// compilazione: g++ lezione4-7-quicksort-dot.c
-//
-// Obiettivo:
-
-// esecuzioni (per osservare struttura ricorsiva), sia con input random che ordine decrescente
-// ./a.out 16 -graph; dot graph.dot -Tpdf -o graph.pdf
-
-// osservazione con input random con range molto limitato (es. rand() % (n/3) )
-// molti pivot uguali ---> quicksort a tre vie
-// ./a.out 16 -graph; dot graph.dot -Tpdf -o graph.pdf
-
-int ct_swap = 0;
-int ct_cmp = 0;
-int ct_read = 0;
-
-int max_dim = 0;
-int ntests = 1;
-int ndiv = 1;
-int details = 0;
-int graph = 0;
-
-int n = 0; /// dimensione dell'array
-
-/// file di output per grafo
-string output_path = "graph.dot";
-ofstream output_graph;
-
-void print_array(int *A, int dim) {
-    for (int j = 0; j < dim; j++) {
-        cout << A[j] << " ";
-    }
-    cout << "\n";
-}
+Stat stat; // Per le statistiche
+int& ct_swap = stat.ct_swap;
+int& ct_cmp = stat.ct_cmp;
+int& ct_read = stat.ct_read;
+int& n = stat.n;
+int& max_dim = stat.max_dim;
+int& ntests = stat.ntests;
+int& ndiv = stat.ndiv;
+bool& details = stat.details;
+bool& graph = stat.graph;
+bool& comparison = stat.comparison;
+string& output_path = stat.output_path;
+ofstream& output_graph = stat.output_graph;
 
 void print_array_graph(int *A, int p, int r, string s, int pivot) {
     /// prepara il disegno dell'array A ed il suo contenuto dall'indice a all'indice b inclusi
@@ -63,20 +54,12 @@ void print_array_graph(int *A, int p, int r, string s, int pivot) {
     output_graph << "</TR> </TABLE>>];" << endl;
 }
 
-void swap(int &a, int &b) {
-    int tmp = a;
-    a = b;
-    b = tmp;
-    /// aggiorno contatore globale di swap
-    ct_swap++;
-}
-
 int partition(int *A, int p, int r) {
 
     /// copia valori delle due meta p..q e q+1..r
 
     int indicerandom = rand() % (r - p + 1) + p;
-    swap(A[indicerandom], A[r]);
+    swap(A[indicerandom], A[r], ct_swap);
     
     int x = A[r];
 
@@ -86,7 +69,7 @@ int partition(int *A, int p, int r) {
         ct_cmp++;
         if (A[j] <= x) {
             i++;
-            swap(A[i], A[j]);
+            swap(A[i], A[j], ct_swap);
         }
 
         if (graph) {
@@ -104,7 +87,7 @@ int partition(int *A, int p, int r) {
             output_graph << "</TR>" << endl;
         }
     }
-    swap(A[i + 1], A[r]);
+    swap(A[i + 1], A[r], ct_swap);
 
     if (graph) {
         output_graph << "<TR>";
@@ -211,74 +194,12 @@ void quick_sort(int *A, int p, int r) {
     }
 }
 
-void print_usage(char **argv) {
-    cerr << "Usage: " << argv[0] << " max-dim [Options]\n";
-        cerr << "   max-dim: specifica la massima dimensione n del problema\n";
-        cerr << "Options:\n";
-        cerr << "  -d=<int>: Specifica quali dimensioni n del problema vengono lanciate in sequenza [default: 1] \n";
-        cerr << "            n = k * max-dim / d, k=1 .. d\n";
-        cerr << "  -t=<int>: Specifica quanti volte viene lanciato l'algoritmo per una specifica dimensione n [default: 1]\n";
-        cerr << "            Utile nel caso in cui l'input viene inizializzato in modo random\n";
-        cerr << "  -v [verbose]: Abilita stampe durante l'esecuzione dell'algoritmo\n";
-        cerr << "  -g [graph]: creazione file di dot con il grafo dell'esecuzione (forza d=1 t=1)\n";
-        cerr << "  -o=[outputh path]: specifica un path per il file di dot\n";
-}
-
-int parse_cmd(int argc, char **argv) {
-    if (argc < 2) {
-        print_usage(argv);
-        return 1;
-    }
-
-    int c;
-    while ((c = getopt(argc, argv, ":d:t:o:vg")) != -1) {
-        switch (c) {
-        case 'v':
-            details = true;
-            break;
-        case 'g':
-            graph = 1;
-            ndiv = 1;
-            ntests = 1;
-            break;
-        case 'd':
-            ndiv = atoi(optarg);
-            break;
-        case 't':
-            ntests = atoi(optarg);
-            break;
-        case 'o':
-            output_path = string(optarg);
-            break;
-        case ':':
-            cerr << "Option -" << (char)optopt << " needs an argument." << endl;
-            print_usage(argv);
-            return 1;
-        case '?':
-            cerr << "Unknown option -" << (char)optopt << endl;
-            print_usage(argv);
-            return 1;
-        default:
-            break;
-        }
-    }
-
-    max_dim = atoi(argv[optind]);
-
-    if (ndiv > max_dim) {
-        cerr << "-d argument must be less or equal to max-dim" << endl;
-        return 1;
-    }
-
-    return 0;
-}
-
 int main(int argc, char **argv) {
     int i, test;
     int *A;
-    int *B; /// buffer per visualizzazione algoritmo
+    int *B; // buffer per visualizzazione algoritmo
 
-    if (parse_cmd(argc, argv))
+    if (parse_cmd(argc, argv, stat))
         return 1;
 
     /// allocazione array

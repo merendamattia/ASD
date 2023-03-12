@@ -32,10 +32,13 @@ In questo algoritmo ci sono principalmente quattro loop:
 > $k$ è l'intervallo di valori possibili nella sequenza (aka il numero più grande della sequenza).
 > $n$ è la lunghezza della sequenza.
 
-Quindi avremo una complessità complessiva in tutti e tre i casi pari a: 
-$$=O(k)+O(n)+O(k)+O(n) =$$
-$$= 2\cdot O(k)+ 2\cdot O(n) = $$
-$$ = O(n+k)$$
+Quindi avremo una complessità complessiva in tutti e tre i casi pari a:
+$$
+\begin{align*}
+	O(k)+O(n)+O(k)+O(n) &= 2\cdot O(k)+ 2\cdot O(n) =\\
+						&= O(n+k)\;.
+\end{align*}
+$$
 
 [_Torna all'indice_](#counting%20sort)
 
