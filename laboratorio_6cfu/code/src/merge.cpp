@@ -1,6 +1,8 @@
 /* 
     compilazione:
         g++ merge.cpp ordinamento.cpp -I../include
+    esecuzione:
+        ./a.out 20 -g && dot graph.dot -Tpdf -o graph.pdf && open graph.pdf
         
     Obiettivo: 
         disegnare la sequenza di ordinamenti effettuata e la struttura delle chiamate ricorsive

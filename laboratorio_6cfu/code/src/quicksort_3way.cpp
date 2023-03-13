@@ -1,13 +1,13 @@
 /* 
     compilazione: 
         g++ quicksort_3way.cpp ordinamento.cpp -I../include
+    esecuzione:
+        ./a.out 20 -g && dot graph.dot -Tpdf -o graph.pdf && open graph.pdf
 
     Obiettivo:
         osservazione con input random con range molto limitato (es. rand() % (n/3) )
         quicksort a tre vie.
         https://en.wikipedia.org/wiki/Dutch_national_flag_problem
-
-        ./a.out 16 -graph; dot graph.dot -Tpdf -o graph.pdf
 
     confrontare il numero di swap e confronti usando 3 vie o partition semplice
 */

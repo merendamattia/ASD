@@ -1,8 +1,8 @@
 /* 
     compilazione: 
-        g++ counting.cpp ordinamento.cpp -I../include && \
-        ./a.out 10 -graph && \ 
-        dot graph.dot -Tpdf -o graph.pdf
+        g++ counting.cpp ordinamento.cpp -I../include
+    esecuzione:
+        ./a.out 20 -g && dot graph.dot -Tpdf -o graph.pdf && open graph.pdf
 
     Obiettivo:
         1) analisi esecuzione ordine crescente
