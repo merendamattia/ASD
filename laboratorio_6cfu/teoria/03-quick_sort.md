@@ -41,6 +41,7 @@ Un esempio grafico di un albero sbilanciato:
 1. Se $p≤k≤i$, allora $A[k]≤x$
 2. Se $i+1≤k≤j-1$, allora $A[k]>x$
 3. Se $k=r$, allora $A[k]=x$
+
 ![[quicksort_invariante.png | 400]]
 
 [_Torna all'indice_](#quick%20sort)
