@@ -221,7 +221,7 @@ int main(int argc, char **argv) {
                 cmp_max = ct_cmp;
         }
 
-        cout << (long)(n*(long)(log(n)/log(2)) + 2*( n-pow(2,(long)(log(n)/log(2))) )) << endl;
+        // cout << (long)(n*(long)(log(n)/log(2)) + 2*( n-pow(2,(long)(log(n)/log(2))) )) << endl;
 
         if (ndiv > 1)
             cout << n << "," << ntests << "," << swap_min << "," << (0.0 + swap_avg) / ntests << "," << swap_max << "," << 0.0 << "," << cmp_min << "," << (0.0 + cmp_avg) / ntests << "," << cmp_max << "," << n * log(n) / log(2) << "\n";
