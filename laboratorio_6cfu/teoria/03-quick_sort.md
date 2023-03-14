@@ -106,7 +106,7 @@ L'algoritmo funziona in modo simile al quicksort tradizionale, ma con una logica
 
 In generale, il quicksort a tre vie è più efficiente del quicksort tradizionale quando ci sono molti valori duplicati nell'array, ma ha una complessità simile in altri casi.
 
-<mark style="background: #FFF3A3A6;">TODO: da aggiungere gif animazione @simonecolli</mark>
+![[quick3way.gif | 450]]
 
 > Maggiori dettagli: */code/quicksort_3way.cpp*
 
