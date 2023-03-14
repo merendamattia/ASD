@@ -1,7 +1,3 @@
-allocazione:
-- tramite liste di struct(valore, padre, figliodx, figliosx)
-- tramite array, vale solo per alcuni tipi di alberi (binari, di ricerca)
-
 # Alberi
 ```toc
 ```
