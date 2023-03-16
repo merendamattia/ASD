@@ -23,8 +23,13 @@ Le <mark style="background: #ABF7F7A6;">foglie</mark> dell'albero sono i nodi ch
 [_Torna all'indice_](#alberi)
 
 ---
+## Tipi di albero
+Esistono diversi tipi di albero. I principali sono i seguenti:
+- Alberi binari
+- Alberi completi
+- Alberi bilanciati
 
-## Alberi binari
+### Alberi binari
 Un <mark style="background: #FFB86CA6;">albero binario</mark> è un tipo di albero in cui ogni nodo ha al massimo due figli, denominati solitamente figlio sinistro e figlio destro.
 
 L'albero binario può essere vuoto, ovvero non contenere alcun nodo, oppure può essere composto da una radice e da uno o due sotto-alberi binari, uno a sinistra e uno a destra della radice.
@@ -37,7 +42,7 @@ La struttura a due figli permette di rappresentare e manipolare in modo efficien
 
 ---
 
-## Alberi completi
+### Alberi completi
 Un <mark style="background: #FFB86CA6;">albero binario completo</mark> è un tipo di albero binario in cui tutti i livelli dell'albero sono completamente riempiti, tranne eventualmente l'ultimo livello che può essere incompleto. In altre parole, tutti i nodi dell'albero, ad eccezione di quelli dell'ultimo livello, hanno due figli.
 
 Le proprietà degli alberi completi includono:
@@ -52,7 +57,7 @@ Le proprietà degli alberi completi includono:
 
 ---
 
-## Alberi bilanciati
+### Alberi bilanciati
 Un <mark style="background: #FFB86CA6;">albero bilanciato</mark> è un tipo di albero in cui la differenza di altezza tra i sottoalberi sinistro e destro di ogni nodo non supera una certa costante predefinita. In altre parole, la differenza di altezza tra il sottoalbero sinistro e quello destro di un nodo non può superare un valore massimo prefissato, solitamente indicato con h.
 
 Un albero bilanciato è una forma di ottimizzazione degli alberi binari in cui si cerca di minimizzare la complessità computazionale degli algoritmi di ricerca, inserimento e cancellazione, che dipendono in modo significativo dalla forma dell'albero.
@@ -90,5 +95,79 @@ L'allocazione di un albero tramite array è più efficiente in termini di spazio
 Tuttavia, l'allocazione tramite array presenta anche alcuni svantaggi: è adatta solo per alberi di dimensioni prefissate e con una struttura fissa, in cui la modifica dei nodi è limitata. Inoltre, la gestione dei puntatori tra i nodi dell'albero può essere più complicata rispetto all'allocazione tramite liste di struct.
 
 ![[albero_implementazione_array.jpg | 400]]
+
+[_Torna all'indice_](#alberi)
+
+---
+
+## Visite in un albero
+Come facciamo a visualizzare il contenuto di un albero?
+Esistono due tipi di visite:
+- Visita in profondità (DFS)
+- Visita in ampiezza (BFS)
+
+### Visita in profondità (DFS)
+La <mark style="background: #FFB86CA6;">visita in profondità</mark> (Depth-First Search) è un algoritmo utilizzato per esplorare e attraversare tutti i nodi di un albero. L'algoritmo funziona in modo ricorsivo, visitando prima i nodi figli del nodo corrente, e poi esplorando ulteriormente i nodi figli dei figli, e così via, fino a quando non ha visitato tutti i nodi dell'albero.
+Ci sono tre varianti principali della DFS: pre-order, post-order e in-order.
+
+---
+
+#### Pre-order
+La visita in profondità <mark style="background: #FF5582A6;">pre-ordine</mark> (pre-order DFS) visita prima il nodo corrente, e poi visita i suoi nodi figli. Questo ordine di visita garantisce che ogni nodo dell'albero venga visitato prima dei suoi nodi figli. In pratica, l'algoritmo esegue le seguenti operazioni:
+1.  Visita il nodo corrente.
+2.  Applica la visita in profondità pre-ordine a ciascun nodo figlio del nodo corrente.
+```cpp
+visit(x) // Pre-order
+	print(value(x))
+	visit(x->left)
+	visit(x->right)
+```
+Questo può essere utile quando si vuole eseguire un'operazione su ciascun nodo dell'albero in un ordine specifico, ad esempio per stampare i nodi dell'albero o per calcolare la somma dei valori dei nodi dell'albero.
+
+[_Torna all'indice_](#alberi)
+
+---
+
+#### Post-order
+La visita in profondità <mark style="background: #ABF7F7A6;">post-ordine</mark> (post-order DFS) visita prima i nodi figli del nodo corrente, e poi visita il nodo corrente. L'algoritmo esegue quindi le seguenti operazioni:
+1.  Applica la visita in profondità post-ordine a ciascun nodo figlio del nodo corrente.
+2.  Visita il nodo corrente.
+```cpp
+visit(x) // Post-order
+	visit(x->left)
+	visit(x->right)
+	print(value(x))
+```
+Questa variante della DFS è utile quando si vuole eseguire un'operazione sul nodo solo dopo aver eseguito un'operazione su tutti i suoi nodi figli. Ad esempio, può essere utilizzato per calcolare l'altezza dell'albero o per visitare i nodi nell'ordine inverso.
+
+[_Torna all'indice_](#alberi)
+
+---
+
+#### In-order
+La visita in profondità <mark style="background: #BBFABBA6;">in-ordine</mark> (in-order DFS) è utilizzata principalmente per gli alberi binari, dove il sottoalbero sinistro è visitato prima del nodo corrente e il sottoalbero destro è visitato dopo il nodo corrente. 
+```cpp
+visit(x) // In-order
+	visit(x->left)
+	print(value(x))
+	visit(x->right)
+```
+Questo ordine di visita consente di visitare i nodi dell'albero in ordine crescente (o decrescente, a seconda dell'implementazione). Tuttavia, tecnicamente è possibile applicare la visita in profondità in-ordine a qualsiasi tipo di albero, anche se il risultato potrebbe non avere un significato preciso.
+
+> È importante notare che, se l'albero non è un albero binario, la visita in profondità non garantisce di visitare i nodi nell'ordine corretto per tutte le possibili applicazioni. 
+> In questo caso, potrebbe essere necessario utilizzare altre tecniche di visita, come la visita in ampiezza (BFS, Breadth-First Search). In generale, la DFS è utile quando si vuole esplorare tutto l'albero o una parte dell'albero in profondità, mentre la BFS è utile quando si vuole esplorare l'albero in ampiezza, visitando prima i nodi più vicini alla radice.
+
+[_Torna all'indice_](#alberi)
+
+---
+
+#### Esempio grafico
+![[DFS.jpeg | 400]]
+
+<mark style="background: #FF5582A6;">Pre-order</mark> (node visited at position red):  `F, B, A, D, C, E, G, I, H`.
+<mark style="background: #BBFABBA6;">In-order</mark> (node visited at position green):  `A, B, C, D, E, F, G, H, I`.
+<mark style="background: #ABF7F7A6;">Post-order</mark> (node visited at position blue):  `A, C, E, D, B, H, I, G, F`.
+
+> Il percorso che seguiamo durante una DFS è noto come [*cammino eureliano*](https://it.wikipedia.org/wiki/Cammino_euleriano).
 
 [_Torna all'indice_](#alberi)
