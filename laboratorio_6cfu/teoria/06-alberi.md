@@ -171,3 +171,8 @@ Questo ordine di visita consente di visitare i nodi dell'albero in ordine cresce
 > Il percorso che seguiamo durante una DFS è noto come [*cammino eureliano*](https://it.wikipedia.org/wiki/Cammino_euleriano).
 
 [_Torna all'indice_](#alberi)
+
+---
+
+## Alberi binari di ricerca
+http://www.cs.ecu.edu/karl/3300/spr16/Notes/DataStructure/Tree/index.html
