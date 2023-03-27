@@ -74,9 +74,83 @@ In generale, gli alberi bilanciati sono utilizzati in molte applicazioni in cui 
 
 ---
 
+### Alberi binari di ricerca
+Gli alberi binari di ricerca sono una struttura dati a forma di albero che consente di organizzare e gestire un insieme di dati in modo efficiente. Ogni nodo dell'albero rappresenta un elemento del set di dati e ha due figli, uno a sinistra e uno a destra, che a loro volta rappresentano elementi minori e maggiori rispetto al nodo padre.
+
+Le <mark style="background: #FFB86CA6;">principali proprietà degli alberi binari di ricerca</mark> sono:
+- In un albero binario di ricerca, ogni nodo a sinistra del nodo radice ha un valore minore del nodo radice e ogni nodo a destra ha un valore maggiore del nodo radice.
+- Tutti i sottoalberi di un albero binario di ricerca sono anch'essi alberi binari di ricerca.
+- La ricerca di un elemento all'interno di un albero binario di ricerca richiede un tempo proporzionale all'altezza dell'albero.
+
+Gli alberi binari di ricerca sono importanti per diverse ragioni. In primo luogo, offrono un modo efficiente di organizzare e gestire grandi quantità di dati, <mark style="background: #FFB8EBA6;">permettendo di eseguire operazioni come l'inserimento, la cancellazione e la ricerca di elementi in tempo logaritmico.</mark>
+In secondo luogo, gli alberi binari di ricerca sono alla base di molte altre strutture dati e algoritmi, come i heap binari, gli alberi AVL e i grafi binari di ricerca.
+
+[_Torna all'indice_](#alberi)
+
+#### Rotazioni
+Per <mark style="background: #BBFABBA6;">mantenere l'invariante degli alberi binari di ricerca</mark>, cioè che ogni nodo a sinistra del nodo radice ha un valore minore del nodo radice e ogni nodo a destra ha un valore maggiore del nodo radice, è necessario eseguire delle operazioni di bilanciamento dell'albero quando si effettuano inserimenti o cancellazioni di nodi.
+
+Una delle tecniche di bilanciamento più comuni per gli alberi binari di ricerca è l'utilizzo di rotazioni. Le rotazioni sono delle operazioni che permettono di modificare la struttura dell'albero senza alterare l'ordine dei nodi.
+
+Esistono due tipi di rotazioni: a sinistra e a destra. La rotazione a sinistra viene utilizzata per bilanciare un nodo che ha un figlio destro più profondo del figlio sinistro, mentre la rotazione a destra viene utilizzata per bilanciare un nodo che ha un figlio sinistro più profondo del figlio destro.
+
+Ecco come funzionano le rotazioni:
+- <mark style="background: #ABF7F7A6;">Rotazione a sinistra:</mark> si prende il figlio destro del nodo non bilanciato e si fa diventare il nuovo nodo radice dell'albero. Il vecchio nodo radice diventa il figlio sinistro del nuovo nodo radice e il figlio sinistro del vecchio nodo radice diventa il figlio destro del nuovo nodo radice.
+- <mark style="background: #ABF7F7A6;">Rotazione a destra:</mark> si prende il figlio sinistro del nodo non bilanciato e si fa diventare il nuovo nodo radice dell'albero. Il vecchio nodo radice diventa il figlio destro del nuovo nodo radice e il figlio destro del vecchio nodo radice diventa il figlio sinistro del nuovo nodo radice.
+
+Dopo l'esecuzione di una rotazione, l'altezza dell'albero potrebbe essere cambiata, ma l'invariante degli alberi binari di ricerca viene mantenuta. L'utilizzo di rotazioni è importante per garantire che gli alberi binari di ricerca rimangano equilibrati e che le operazioni di ricerca, inserimento e cancellazione possano essere eseguite in modo efficiente.
+
+![[rotazione_alberi.png]]
+
+> Approfondimento al seguente [link](http://www.cs.ecu.edu/karl/3300/spr16/Notes/DataStructure/Tree/balance2.html).
+
+[_Torna all'indice_](#alberi)
+
+---
+
+### Heap
+L'heap è un tipo di struttura dati ad albero utilizzato principalmente per implementare una coda con priorità e per la ricerca del cammino più breve nei grafi. Si tratta di un albero binario (quasi) completo in cui ogni nodo rappresenta un elemento e ogni elemento è associato ad una chiave.
+
+L'heap può essere di due tipi: <mark style="background: #FFB86CA6;">heap massimo o heap minimo</mark>. In un heap massimo, il valore del padre è maggiore o uguale al valore di entrambi i figli, mentre in un heap minimo il valore del padre è minore o uguale al valore di entrambi i figli.
+
+La <mark style="background: #ABF7F7A6;">proprietà chiave</mark> dell'heap è che il valore di un nodo è sempre maggiore (o minore) di quelli dei suoi figli. In altre parole, il nodo radice dell'heap massimo è l'elemento con la chiave più grande, mentre il nodo radice dell'heap minimo è l'elemento con la chiave più piccola.
+
+L'heap viene utilizzato soprattutto per implementare le code con priorità, in cui gli elementi sono processati in ordine di priorità. La priorità viene data dalle chiavi degli elementi, e gli elementi con la chiave maggiore (o minore, a seconda dell'heap) hanno una priorità più alta.
+
+L'heap supporta diverse operazioni, tra cui:
+- <mark style="background: #BBFABBA6;">Inserimento:</mark> l'elemento viene inserito nell'heap come ultimo nodo e successivamente viene ripristinata la proprietà dell'heap attraverso l'operazione di heapify, che confronta il valore del nodo con il valore del padre e, se necessario, scambia i nodi fino a quando la proprietà dell'heap non è ripristinata.
+- <mark style="background: #BBFABBA6;">Estrazione:</mark> l'elemento con la chiave più alta (o più bassa) viene rimosso dalla radice dell'heap e sostituito con l'ultimo elemento dell'heap. Successivamente, l'heap viene nuovamente ripristinato tramite l'operazione di heapify, che confronta il valore del nodo con il valore dei figli e, se necessario, scambia il nodo con il figlio più grande (o più piccolo) fino a quando la proprietà dell'heap non è ripristinata.
+- <mark style="background: #BBFABBA6;">Accesso all'elemento di massima (o minima) priorità:</mark> restituisce il valore dell'elemento nella radice dell'heap senza rimuoverlo.
+
+L'heap è un'importante struttura dati utilizzata in molte applicazioni, come gli algoritmi di ordinamento (es. heap-sort), la ricerca del cammino più breve nei grafi (es. algoritmo di Dijkstra), l'ottimizzazione dei flussi di dati (es. algoritmo di Huffman), la gestione delle risorse del sistema (es. assegnazione di processi in un sistema operativo).
+
+*Pseudocodice Max-Heapify:*
+![[max_heapify.png | 350]]
+
+[_Torna all'indice_](#alberi)
+
+---
+
+#### Approfondimento: heap nei grafi
+L'heap viene spesso utilizzato negli algoritmi di ricerca dei cammini minimi nei grafi, come l'algoritmo di Dijkstra e l'algoritmo di Prim, perché consente di gestire in modo efficiente la coda dei nodi ancora da visitare.
+
+L'algoritmo di Dijkstra, ad esempio, viene utilizzato per trovare il cammino più breve tra un nodo di partenza e tutti gli altri nodi del grafo. L'idea di base dell'algoritmo di Dijkstra è quella di mantenere una lista di nodi ancora da visitare, ordinata in base alla distanza dal nodo di partenza. In ogni iterazione, si seleziona il nodo con la distanza minima dalla lista e si aggiornano le distanze dei suoi nodi adiacenti.
+
+L'heap viene utilizzato per implementare la lista dei nodi ancora da visitare, in modo tale da selezionare in modo efficiente il nodo con la distanza minima in ogni iterazione dell'algoritmo. In particolare, l'heap viene inizializzato con il nodo di partenza e la sua distanza, e gli altri nodi vengono inseriti nell'heap man mano che vengono scoperti durante l'esecuzione dell'algoritmo.
+
+In ogni iterazione, si estrae il nodo con la distanza minima dall'heap e si aggiornano le distanze dei suoi nodi adiacenti. Se la distanza di un nodo adiacente viene aggiornata, viene inserito (o aggiornato) nell'heap. In questo modo, l'heap mantiene la lista dei nodi ancora da visitare, ordinata in base alla distanza dal nodo di partenza.
+
+L'utilizzo dell'heap consente di ridurre la complessità dell'algoritmo di Dijkstra da $O(|V|^2)$ a $O(|E| \cdot log |V|)$, dove $|V|$ e $|E|$ sono rispettivamente il numero di nodi e di archi del grafo. Inoltre, l'utilizzo dell'heap consente di implementare l'algoritmo di Prim per trovare un albero di copertura minimo in un grafo pesato.
+
+In generale, l'heap viene utilizzato nei problemi di ricerca dei cammini minimi nei grafi perché consente di gestire in modo efficiente la coda dei nodi ancora da visitare, permettendo di selezionare il nodo con la distanza minima (o massima) in tempo logaritmico rispetto al numero di nodi nella coda.
+
+[_Torna all'indice_](#alberi)
+
+---
+
 ## Implementazione di un albero
 Esistono diversi tipi di implementazioni per gli alberi. Le due principali sono: 
-- Allocazione tramite liste di struct .
+- Allocazione tramite liste di struct.
 - Allocazione tramite array.
 
 ### Liste di struct
@@ -171,8 +245,3 @@ Questo ordine di visita consente di visitare i nodi dell'albero in ordine cresce
 > Il percorso che seguiamo durante una DFS è noto come [*cammino eureliano*](https://it.wikipedia.org/wiki/Cammino_euleriano).
 
 [_Torna all'indice_](#alberi)
-
----
-
-## Alberi binari di ricerca
-http://www.cs.ecu.edu/karl/3300/spr16/Notes/DataStructure/Tree/index.html
