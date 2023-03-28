@@ -1,6 +1,9 @@
 /* 
     compilazione: 
         g++ quicksort.cpp ordinamento.cpp -I../include
+    esecuzione:
+        ./a.out 20 -g && dot graph.dot -Tpdf -o graph.pdf && open graph.pdf
+
     Obiettivo:
         esecuzioni (per osservare struttura ricorsiva), sia con input random che ordine decrescente
         ./a.out 16 -graph; dot graph.dot -Tpdf -o graph.pdf

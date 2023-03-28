@@ -1,5 +1,8 @@
 #include "../include/ordinamento.hh"
 
+/*
+Questa procedura stampa a video i comandi disponibili
+*/
 void print_usage(char **argv) {
 	using std::cerr;
 	using std::endl;
@@ -17,7 +20,9 @@ void print_usage(char **argv) {
         cerr << "  -o, --output-file=<path-to-file>: specifica un path per il file .dot" << endl;
 }
 
-
+/*
+Questa funzione si occupa di gestire il parsing dei comandi
+*/
 int parse_cmd(int argc, char **argv, Stat& s) {
     if (argc < 2) {
         print_usage(argv);
@@ -88,6 +93,9 @@ int parse_cmd(int argc, char **argv, Stat& s) {
 	return 0;
 }
 
+/*
+Stampa in output un array 
+*/
 void print_array(int *A, int dim) {
     for (int j = 0; j < dim; j++) {
         std::cout << A[j] << ' ';
@@ -95,6 +103,9 @@ void print_array(int *A, int dim) {
     std::cout << std::endl;
 }
 
+/*
+Effettua lo swap del contenuto di due variabili e aggiorna un contatore di swap
+*/
 void swap(int &a, int &b, int& count) {
     int tmp = a;
     a = b;

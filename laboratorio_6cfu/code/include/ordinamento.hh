@@ -6,6 +6,7 @@
 #include <string>
 #include <unistd.h>
 #include <getopt.h>
+
 struct Stat {
 	int ct_swap;
 	int ct_cmp;
