@@ -85,10 +85,13 @@ void counting_sort(int *A, int *B, int *C, int n, int k) {
     // n: elementi da ordinare
     // k: valore massimo contenuto in A
 
-    for (int i = 0; i <= k; i++) // reset array conteggi
+    for (int i = 0; i <= k; i++) {
+        ++ct_read;
         C[i] = 0;
+    } // reset array conteggi
 
     for (int j = 0; j < n; j++) { // conteggio istogramma
+        ct_read+=2;
         C[A[j]]++;
         if (graph) {
             if (j + 1 < n) {
@@ -116,6 +119,7 @@ void counting_sort(int *A, int *B, int *C, int n, int k) {
     }
 
     for (int i = 1; i <= k; i++) { // C[i] contiene il numero di elementi <= i
+        ct_read+=1;
         C[i] += C[i - 1];
 
         if (i < k) {
@@ -143,6 +147,7 @@ void counting_sort(int *A, int *B, int *C, int n, int k) {
             mi chiedo nel conteggio C quanti sono gli elementi minori o uguali:
             questo corrisponde alla posizione dell'elemento in B 
         */
+        ct_read+=2;
         int v = A[j];
         B[C[v] - 1] = v;
 
@@ -164,6 +169,7 @@ void counting_sort(int *A, int *B, int *C, int n, int k) {
         print_array_graph(C, j, k + 1, "nodeC_sort_", A[j]);
         print_array_graph(B, j, n, "nodeB_sort_", C[A[j]] - 1);
 
+        ct_read+=3;
         C[A[j]] = C[A[j]] - 1;
     }
 
@@ -223,9 +229,9 @@ int main(int argc, char **argv) {
             k = 0;
 
             for (i = 0; i < n; i++) {
-                A[i]= 4;
+                // A[i]= 4;
                 // A[i] = n - i - 1;
-                // A[i]= rand() % (n/3);
+                A[i]= rand() % (n/3);
                 // A[i]= rand() % (n);
 
                 B[i] = -1; // inizializzazione
@@ -268,6 +274,8 @@ int main(int argc, char **argv) {
         cout << "File " << output_path << " scritto" << endl
              << "Creare il grafo con: dot " << output_path << " -Tpdf -o graph.pdf" << endl;
     }
+
+    cout << ct_read << endl;
 
     delete[] A;
     delete[] B;
