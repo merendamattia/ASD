@@ -3,6 +3,7 @@
         g++ quicksort.cpp ordinamento.cpp -I../include
     esecuzione:
         ./a.out 20 -g && dot graph.dot -Tpdf -o graph.pdf && open graph.pdf
+        ./a.out 1000 -d 100 -t 50
 
     Obiettivo:
         esecuzioni (per osservare struttura ricorsiva), sia con input random che ordine decrescente
@@ -249,8 +250,8 @@ int main(int argc, char **argv) {
 
             /// inizializzazione array: numeri random con range dimensione array
             for (i = 0; i < n; i++) {
-                A[i] = n - i;
-                //  A[i]= rand() % (n*10);
+                // A[i] = n - i;
+                A[i] = rand() % (n*10);
                 // A[i] = rand() % (n / 4);
             }
 
@@ -270,6 +271,11 @@ int main(int argc, char **argv) {
 
             if (graph)
                 print_array_graph(A, 0, n - 1, "node_after", 0);
+
+            if (details) {
+                cout << "Array ordinato: " << endl;;
+                print_array(A, n);
+            }
 
             /// statistiche
             swap_avg += ct_swap;
