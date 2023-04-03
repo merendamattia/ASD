@@ -40,41 +40,41 @@ int parse_cmd(int argc, char **argv, Stat& s) {
     int c;
     while ((c = getopt_long(argc, argv, ":d:t:o:vgc", long_options, &option_index)) != -1) {
         switch (c) {
-        case 'v':
-            s.details = true;
-            break;
-        case 'c':
-            s.comparison = true;
-            break;
-        case 'g':
-            s.graph = 1;
-            s.ndiv = 1;
-            s.ntests = 1;
-            break;
-        case 'd':
-            s.ndiv = atoi(optarg);
-            break;
-        case 't':
-            s.ntests = atoi(optarg);
-            break;
-        case 'o':
-            s.output_path = std::string(optarg);
-            break;
-        case ':':
-            std::cerr << "Option -" << (char)optopt << " needs an argument." << std::endl;
-            print_usage(argv);
-            return 1;
-        case '?':
-            std::cerr << "Unknown option";
-            if (optopt)
-                std::cerr << " -" << (char)optopt << std::endl;
-            else
-                std::cerr << std::endl;
+            case 'v':
+                s.details = true;
+                break;
+            case 'c':
+                s.comparison = true;
+                break;
+            case 'g':
+                s.graph = 1;
+                s.ndiv = 1;
+                s.ntests = 1;
+                break;
+            case 'd':
+                s.ndiv = atoi(optarg);
+                break;
+            case 't':
+                s.ntests = atoi(optarg);
+                break;
+            case 'o':
+                s.output_path = std::string(optarg);
+                break;
+            case ':':
+                std::cerr << "Option -" << (char)optopt << " needs an argument." << std::endl;
+                print_usage(argv);
+                return 1;
+            case '?':
+                std::cerr << "Unknown option";
+                if (optopt)
+                    std::cerr << " -" << (char)optopt << std::endl;
+                else
+                    std::cerr << std::endl;
 
-            print_usage(argv);
-            return 1;
-        default:
-            break;
+                print_usage(argv);
+                return 1;
+            default:
+                break;
         }
     }
 
