@@ -20,14 +20,20 @@ Ad esempio, un albero lineare (lista) ha $n$ nodi, mentre un albero completo bin
 ### Foglie
 Le <mark style="background: #ABF7F7A6;">foglie</mark> dell'albero sono i nodi che non hanno figli, ovvero i nodi terminali dell'albero. Le foglie sono importanti in molte operazioni sull'albero, come la ricerca, la modifica o l'eliminazione di nodi. Tutti i nodi dell'ultimo livello dell'albero sono foglie.
 
+### Frontiera
+La definizione di <mark style="background: #ABF7F7A6;">frontiera</mark> può variare a seconda del contesto in cui viene utilizzata. Nel contesto dell'algoritmo BFS, la frontiera rappresenta l'insieme dei nodi che devono ancora essere elaborati, mentre nel contesto dell'albero rappresenta l'insieme di tutti i nodi foglia dell'albero.
+
 [_Torna all'indice_](#alberi)
 
 ---
+
 ## Tipi di albero
 Esistono diversi tipi di albero. I principali sono i seguenti:
-- Alberi binari
-- Alberi completi
-- Alberi bilanciati
+- [Alberi binari](#Alberi%20binari)
+- [Alberi completi](#Alberi%20completi)
+- [Alberi bilanciati](#Alberi%20bilanciati)
+
+---
 
 ### Alberi binari
 Un <mark style="background: #FFB86CA6;">albero binario</mark> è un tipo di albero in cui ogni nodo ha al massimo due figli, denominati solitamente figlio sinistro e figlio destro.
@@ -162,7 +168,9 @@ Una volta creato il nodo, è necessario collegarlo correttamente ai nodi esisten
 
 ### Array
 L'allocazione di un albero tramite array prevede la creazione di un array di nodi dell'albero, dove ogni nodo è rappresentato da un elemento dell'array. L'allocazione del nuovo nodo avviene tramite l'incremento di un contatore che tiene traccia del numero di nodi presenti nell'albero. In questo modo, il nuovo nodo viene allocato nell'elemento successivo dell'array e viene collegato correttamente ai nodi esistenti dell'albero. 
-<mark style="background: #FFF3A3A6;">TODO: è da sistemare, non ne avevo voglia e ho fatto un gran copia e incolla :)</mark>
+
+#todo 
+- [ ] Da sistemare
 
 L'allocazione di un albero tramite array è più efficiente in termini di spazio, in quanto non è necessario allocare memoria per i puntatori di ogni nodo, ma solo per il valore intero che rappresenta il nodo. Inoltre, l'allocazione tramite array può essere più efficiente in termini di tempo di accesso ai nodi dell'albero, in quanto i nodi sono memorizzati in modo contiguo in memoria e quindi l'accesso ai nodi è più veloce.
 
@@ -245,3 +253,8 @@ Questo ordine di visita consente di visitare i nodi dell'albero in ordine cresce
 > Il percorso che seguiamo durante una DFS è noto come [*cammino eureliano*](https://it.wikipedia.org/wiki/Cammino_euleriano).
 
 [_Torna all'indice_](#alberi)
+
+---
+
+#todo 
+- [ ] Da aggiungere BFS
