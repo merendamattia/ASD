@@ -156,8 +156,10 @@ In generale, l'heap viene utilizzato nei problemi di ricerca dei cammini minimi 
 
 ## Implementazione di un albero
 Esistono diversi tipi di implementazioni per gli alberi. Le due principali sono: 
-- Allocazione tramite liste di struct.
-- Allocazione tramite array.
+- [Allocazione tramite liste di struct](#Liste%20di%20struct)
+- [Allocazione tramite array](#array)
+
+---
 
 ### Liste di struct
 <mark style="background: #FFB8EBA6;">L'allocazione di un albero tramite liste di struct</mark> prevede la creazione di una struttura che rappresenta il nodo dell'albero. Questa struttura contiene un valore intero e tre puntatori, rispettivamente al padre, al figlio destro e al figlio sinistro. Ogni nodo dell'albero viene rappresentato da un'istanza della struttura. 
@@ -166,11 +168,12 @@ Una volta creato il nodo, è necessario collegarlo correttamente ai nodi esisten
 
 ![[albero_implementazione_struct.jpeg | 400]]
 
-### Array
-L'allocazione di un albero tramite array prevede la creazione di un array di nodi dell'albero, dove ogni nodo è rappresentato da un elemento dell'array. L'allocazione del nuovo nodo avviene tramite l'incremento di un contatore che tiene traccia del numero di nodi presenti nell'albero. In questo modo, il nuovo nodo viene allocato nell'elemento successivo dell'array e viene collegato correttamente ai nodi esistenti dell'albero. 
+[_Torna all'indice_](#alberi)
 
-#todo 
-- [ ] Da sistemare
+---
+
+### Array
+<mark style="background: #D2B3FFA6;">L'allocazione di un albero tramite array</mark> prevede la creazione di un array di nodi dell'albero, dove ogni nodo è rappresentato da un elemento dell'array. L'allocazione del nuovo nodo avviene tramite l'incremento di un contatore che tiene traccia del numero di nodi presenti nell'albero. In questo modo, il nuovo nodo viene allocato nell'elemento successivo dell'array e viene collegato correttamente ai nodi esistenti dell'albero. 
 
 L'allocazione di un albero tramite array è più efficiente in termini di spazio, in quanto non è necessario allocare memoria per i puntatori di ogni nodo, ma solo per il valore intero che rappresenta il nodo. Inoltre, l'allocazione tramite array può essere più efficiente in termini di tempo di accesso ai nodi dell'albero, in quanto i nodi sono memorizzati in modo contiguo in memoria e quindi l'accesso ai nodi è più veloce.
 
@@ -185,8 +188,10 @@ Tuttavia, l'allocazione tramite array presenta anche alcuni svantaggi: è adatta
 ## Visite in un albero
 Come facciamo a visualizzare il contenuto di un albero?
 Esistono due tipi di visite:
-- Visita in profondità (DFS)
-- Visita in ampiezza (BFS)
+- [Visita in profondità (DFS)](#Visita%20in%20profondità%20(DFS))
+- [Visita in ampiezza (BFS)](#Visita%20in%20ampiezza%20(BFS))
+
+---
 
 ### Visita in profondità (DFS)
 La <mark style="background: #FFB86CA6;">visita in profondità</mark> (Depth-First Search) è un algoritmo utilizzato per esplorare e attraversare tutti i nodi di un albero. L'algoritmo funziona in modo ricorsivo, visitando prima i nodi figli del nodo corrente, e poi esplorando ulteriormente i nodi figli dei figli, e così via, fino a quando non ha visitato tutti i nodi dell'albero.
@@ -256,5 +261,11 @@ Questo ordine di visita consente di visitare i nodi dell'albero in ordine cresce
 
 ---
 
-#todo 
-- [ ] Da aggiungere BFS
+### Visita in ampiezza (BFS)
+La <mark style="background: #FFB86CA6;">visita in ampiezza</mark> (BFS) è un algoritmo utilizzato per attraversare una struttura dati ad albero in modo sistematico e completo. L'algoritmo visita tutti i nodi dell'albero livello per livello, partendo dal nodo radice e continuando con i suoi figli, poi i figli dei figli e così via, fino a quando non ha visitato tutti i nodi dell'albero.
+
+Il funzionamento dell'algoritmo BFS consiste nell'utilizzo di una coda FIFO (First-In, First-Out) per memorizzare i nodi dell'albero. Inizialmente, il nodo radice viene inserito nella coda. Successivamente, finché la coda non è vuota, il primo elemento della coda viene rimosso e visitato. Poi, i suoi figli vengono inseriti nella coda. Il processo viene ripetuto finché non vengono visitati tutti i nodi dell'albero.
+
+![[bfs_tree.png]]
+
+[_Torna all'indice_](#alberi)
