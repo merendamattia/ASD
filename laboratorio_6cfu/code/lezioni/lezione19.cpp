@@ -374,6 +374,14 @@ int fib(int n) {
     return risposta;
 }
 
+int fib_old(int n) {
+    ct_fib++;
+	if(n <= 2)
+		return 1;
+	else
+		return fib_old(n - 1) + fib_old(n - 2);
+}
+
 int main(int argc, char **argv) {
     int i, test;
 
@@ -388,7 +396,8 @@ int main(int argc, char **argv) {
     for (int i = 0; i < n_nodi; i++)
         V[i] = 0;
 
-    printf("%d\n",fib(100));
+    printf("%d\n",fib(30));
+    // printf("%d\n",fib_old(30));
 
     printf("ingressi %d\n", ct_fib);
 
