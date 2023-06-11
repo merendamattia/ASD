@@ -72,3 +72,20 @@ Il tempo di esecuzione di $\displaystyle O(|V||E|^{2})$ si trova mostrando che o
 Un'altra proprietà di questo algoritmo è che la lunghezza del cammino aumentante minimo aumenta in modo monotono.
 
 [_Torna all'indice_](#flow%20networks)
+
+--- 
+
+## Max-flow min-cut Theorem
+Il teorema del flusso massimo-minimo (Max-flow min-cut theorem) è un importante risultato nella teoria dei grafi e nei problemi di flusso di rete. <u>Esso afferma che il valore del flusso massimo in un grafo di flusso di rete è uguale alla capacità minima di un taglio nel grafo.</u>
+
+Un <mark style="background: #FFB8EBA6;">taglio</mark> in un grafo di flusso di rete è una partizione dei nodi del grafo in due insiemi disgiunti, solitamente chiamati $S$ (source, sorgente) e $T$ (sink, destinazione). Il taglio determina quali nodi appartengono alla sorgente e quali appartengono alla destinazione.
+
+La <mark style="background: #D2B3FFA6;">capacità di un taglio</mark> è la somma delle capacità degli archi che attraversano il taglio, ovvero la capacità degli archi che collegano un nodo in $S$ a un nodo in $T$.
+
+Il teorema del flusso massimo-minimo afferma che il valore del flusso massimo che può essere inviato dalla sorgente alla destinazione nel grafo di flusso di rete è uguale alla capacità minima tra tutti i possibili tagli del grafo.
+
+Questo significa che per determinare il flusso massimo nel grafo, è sufficiente trovare un taglio con capacità minima e il valore di quel taglio sarà uguale al flusso massimo nel grafo.
+
+![[Max_flow_cut.png]]
+
+[_Torna all'indice_](#flow%20networks)
