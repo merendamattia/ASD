@@ -201,20 +201,20 @@ Animazione:
 
 I cammini minimi sono importanti perché vengono utilizzati in molti problemi di ottimizzazione che coinvolgono i grafi. Ad esempio, possono essere utilizzati per trovare la strada più veloce per raggiungere una destinazione, il percorso più breve tra due città o il flusso di costo minimo attraverso una rete.
 
-Esistono diversi algoritmi per trovare i cammini minimi nei grafi, ma i due algoritmi più comuni sono [l'algoritmo di Dijkstra](#dijkstra) e l'algoritmo di Bellman-Ford.
+Esistono diversi algoritmi per trovare i cammini minimi nei grafi, ma i due algoritmi più comuni sono [l'algoritmo di Dijkstra](#dijkstra) e [l'algoritmo di Bellman-Ford](#bellman-ford).
 
 [_Torna all'indice_](#grafi)
 
 ---
 
 ### Dijkstra
-<mark style="background: #D2B3FFA6;">L'algoritmo di Dijkstra è un algoritmo greedy per trovare il cammino minimo tra un nodo di partenza e un nodo di destinazione all'interno di un grafo orientato con pesi sugli archi non negativi.</mark> L'algoritmo mantiene un insieme di nodi visitati e un insieme di nodi ancora da visitare, inizialmente vuoti. Inoltre, mantiene un vettore dist che tiene traccia della distanza minima tra il nodo di partenza e tutti gli altri nodi del grafo, inizializzato a un valore infinito per tutti i nodi tranne che per il nodo di partenza, il cui valore è impostato a 0.
+<mark style="background: #D2B3FFA6;">L'algoritmo di Dijkstra è un algoritmo greedy per trovare il cammino minimo tra un nodo di partenza e un nodo di destinazione all'interno di un grafo orientato con pesi sugli archi non negativi.</mark> L'algoritmo mantiene un insieme di nodi visitati e un insieme di nodi ancora da visitare, inizialmente vuoti. Inoltre, mantiene un vettore `dist` che tiene traccia della distanza minima tra il nodo di partenza e tutti gli altri nodi del grafo, inizializzato a un valore infinito per tutti i nodi tranne che per il nodo di partenza, il cui valore è impostato a 0.
 
 L'algoritmo di Dijkstra utilizza una coda di priorità per selezionare il nodo con la distanza minima dal nodo di partenza da esaminare. Inizialmente, il nodo di partenza viene inserito nella coda di priorità con una priorità pari a 0. Ad ogni iterazione, il nodo con la priorità più bassa viene rimosso dalla coda di priorità e aggiunto all'insieme dei nodi visitati.
 
-Successivamente, l'algoritmo esamina tutti i nodi adiacenti al nodo appena visitato e aggiorna la distanza minima se trova un percorso migliore attraverso il nodo corrente. Se la nuova distanza minima è inferiore alla distanza attualmente registrata per il nodo adiacente, il valore dist viene aggiornato con la nuova distanza minima. Infine, il nodo adiacente viene inserito nella coda di priorità con la sua nuova priorità pari alla distanza minima appena aggiornata.
+Successivamente, l'algoritmo esamina tutti i nodi adiacenti al nodo appena visitato e aggiorna la distanza minima se trova un percorso migliore attraverso il nodo corrente. Se la nuova distanza minima è inferiore alla distanza attualmente registrata per il nodo adiacente, il valore `dist` viene aggiornato con la nuova distanza minima. Infine, il nodo adiacente viene inserito nella coda di priorità con la sua nuova priorità pari alla distanza minima appena aggiornata.
 
-L'algoritmo continua a esaminare i nodi nella coda di priorità in ordine di priorità crescente finché non raggiunge il nodo di destinazione o fino a quando la coda di priorità diventa vuota. Una volta raggiunto il nodo di destinazione, l'algoritmo può terminare e restituire il valore di dist registrato per il nodo di destinazione.
+L'algoritmo continua a esaminare i nodi nella coda di priorità in ordine di priorità crescente finché non raggiunge il nodo di destinazione o fino a quando la coda di priorità diventa vuota. Una volta raggiunto il nodo di destinazione, l'algoritmo può terminare e restituire il valore di `dist` registrato per il nodo di destinazione.
 
 Se il nodo di destinazione non è raggiungibile dal nodo di partenza, la coda di priorità diventerà vuota senza che la destinazione sia stata raggiunta, e il valore di dist registrato per la destinazione rimarrà infinito. In questo caso, si può concludere che non esiste alcun cammino tra il nodo di partenza e il nodo di destinazione.
 
@@ -229,17 +229,17 @@ Pseudocodice:
 ---
 
 ### Bellman-Ford
-<mark style="background: #FFB8EBA6;">L'algoritmo di Bellman-Ford è un algoritmo dinamico di programmazione dinamica utilizzato per trovare il cammino minimo tra un nodo di partenza e tutti gli altri nodi in un grafo orientato o non orientato con pesi sugli archi arbitrari, anche negativi.</mark> L'algoritmo utilizza una tecnica chiamata "rilassamento" degli archi per iterativamente aggiornare le distanze minime tra il nodo di partenza e gli altri nodi del grafo.
+<mark style="background: #FFB8EBA6;">L'algoritmo di Bellman-Ford è un algoritmo dinamico di programmazione dinamica utilizzato per trovare il cammino minimo tra un nodo di partenza e tutti gli altri nodi in un grafo orientato o non orientato con pesi sugli archi arbitrari, anche negativi.</mark> L'algoritmo utilizza una tecnica chiamata "rilassamento" degli archi per  aggiornare iterativamente le distanze minime tra il nodo di partenza e gli altri nodi del grafo.
 
-L'algoritmo mantiene un vettore dist che tiene traccia della distanza minima tra il nodo di partenza e tutti gli altri nodi del grafo. Inizialmente, tutti i valori di dist sono impostati a un valore infinito, tranne che per il nodo di partenza, il cui valore dist è impostato a 0.
+L'algoritmo mantiene un vettore `dist` che tiene traccia della distanza minima tra il nodo di partenza e tutti gli altri nodi del grafo. Inizialmente, tutti i valori di `dist` sono impostati a un valore infinito, tranne che per il nodo di partenza, il cui valore dist è impostato a 0.
 
-L'algoritmo esegue $|V| - 1$ iterazioni, dove $|V|$ è il numero di nodi del grafo. Ad ogni iterazione, l'algoritmo rilassa tutti gli archi del grafo, aggiornando i valori di dist per i nodi raggiungibili tramite gli archi rilassati. L'algoritmo quindi aggiorna il vettore dist con i nuovi valori di dist calcolati.
+L'algoritmo esegue $|V| - 1$ iterazioni, dove $|V|$ è il numero di nodi del grafo. Ad ogni iterazione, l'algoritmo rilassa tutti gli archi del grafo, aggiornando i valori di `dist` per i nodi raggiungibili tramite gli archi rilassati. L'algoritmo quindi aggiorna il vettore `dist` con i nuovi valori di `dist` calcolati.
 
-Il rilassamento di un arco $(u, v)$ significa verificare se la distanza minima tra il nodo di partenza e il nodo $v$ può essere migliorata passando attraverso il nodo $u$. Se la distanza minima tra il nodo di partenza e il nodo $u$ sommata al peso dell'arco $(u, v)$ è inferiore alla distanza attualmente registrata per il nodo $v$, il valore di dist per il nodo $v$ viene aggiornato con il nuovo valore di dist calcolato. L'algoritmo di Bellman-Ford esegue questo rilassamento per tutti gli archi del grafo ad ogni iterazione.
+Il rilassamento di un arco $(u, v)$ significa verificare se la distanza minima tra il nodo di partenza e il nodo $v$ può essere migliorata passando attraverso il nodo $u$. Se la distanza minima tra il nodo di partenza e il nodo $u$ sommata al peso dell'arco $(u, v)$ è inferiore alla distanza attualmente registrata per il nodo $v$, il valore di `dist` per il nodo $v$ viene aggiornato con il nuovo valore di `dist` calcolato. L'algoritmo di Bellman-Ford esegue questo rilassamento per tutti gli archi del grafo ad ogni iterazione.
 
 Se dopo l'ultima iterazione del ciclo, ci sono ancora archi che possono essere rilassati, ciò significa che il grafo contiene un ciclo di peso negativo. In tal caso, l'algoritmo non può determinare il cammino minimo tra il nodo di partenza e il nodo di destinazione, e l'algoritmo termina restituendo un messaggio di errore.
 
-L'algoritmo di Bellman-Ford ha una complessità computazionale di $O(|E| \cdot |V|)$, dove $|E|$ è il numero di archi del grafo e $|V|$ è il numero di nodi del grafo. L'algoritmo è efficiente per grafi con un basso numero di archi ma un grande numero di nodi, ma diventa meno efficiente per grafi densi. Tuttavia, l'algoritmo di Bellman-Ford è l'unico algoritmo che funziona con grafi che contengono cicli di peso negativo.
+L'algoritmo di Bellman-Ford ha una complessità computazionale di $O(|E| \cdot |V|)$, dove $|E|$ è il numero di archi del grafo e $|V|$ è il numero di nodi del grafo. Tuttavia, l'algoritmo di Bellman-Ford è l'unico algoritmo che funziona con grafi che contengono cicli di peso negativo.
 
 Pseudocodice:
 
@@ -276,5 +276,9 @@ L'algoritmo di Tarjan può essere descritto come segue:
 6.  Dopo che sono state visitate tutte le adiacenze di un nodo u, se il suo valore di `lowlink` è uguale al suo numero di ordine di visita, allora è stato trovato un insieme completo di nodi fortemente connessi. Estrai tutti i nodi dalla pila fino a quando non si raggiunge il nodo u e aggiungili all'insieme delle componenti fortemente connesse correnti.
 
 L'algoritmo di Tarjan ha una complessità temporale di $O(|V| + |E|)$.
+
+Pseudocodice:
+
+![[tarjan_pseudocode.png]]
 
 [_Torna all'indice_](#grafi)
