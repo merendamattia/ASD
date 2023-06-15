@@ -281,4 +281,10 @@ Pseudocodice:
 
 ![[tarjan_pseudocode.png]]
 
+Animazione:
+
+![[Tarjan's_Algorithm_Animation.gif]]
+
+> Maggiori dettagli su [Wikipedia](https://en.wikipedia.org/wiki/Tarjan%27s_strongly_connected_components_algorithm).
+
 [_Torna all'indice_](#grafi)
