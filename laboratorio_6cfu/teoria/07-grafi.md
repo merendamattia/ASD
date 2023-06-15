@@ -88,6 +88,7 @@ Esistono diverse tecniche per lavorare con i DAG, come ad esempio l'ordinamento 
 <mark style="background: #FF5582A6;">Svantaggi:</mark> la visita è esponenziale in $n$: $2^n$.
 
 Un esempio grafico di DAG:
+
 ![[dag_esempio.png]]
 
 [_Torna all'indice_](#grafi)
@@ -98,6 +99,7 @@ Un esempio grafico di DAG:
 Una foresta è un insieme di alberi non necessariamente connessi tra di loro. In una foresta, ogni nodo ha esattamente un arco entrante, tranne per un nodo speciale chiamato radice, che non ha archi entranti. I nodi possono avere più di un arco uscente e il numero di alberi presenti in una foresta può essere variabile.
 
 Un esempio grafico di Foresta:
+
 ![[foresta_esempio.png]]
 
 [_Torna all'indice_](#grafi)
@@ -108,6 +110,7 @@ Un esempio grafico di Foresta:
 Una lista semplice è una struttura dati simile alla lista doppia collegata, ma in cui ogni nodo ha solo un campo per il puntatore al nodo successivo. Questo significa che è possibile attraversare la lista solo in una direzione. In un grafo, una lista semplice può essere utilizzata per rappresentare una lista di adiacenza per ogni nodo, ma la ricerca di un arco richiede di attraversare l'intera lista partendo dal nodo di origine.
 
 Un esempio grafico di Lista semplice:
+
 ![[lista_semplice_esempio.png]]
 
 [_Torna all'indice_](#grafi)
@@ -120,6 +123,7 @@ Una lista doppia collegata è una struttura dati che permette di memorizzare un 
 <mark style="background: #FF5582A6;">Svantaggi:</mark> la visita non termina perchè sono presenti dei cicli.
 
 Un esempio grafico di Lista doppia collegata:
+
 ![[lista_doppia_collegata_esempio.png]]
 
 [_Torna all'indice_](#grafi)
@@ -132,6 +136,7 @@ Una lista circolare è una struttura dati simile alla lista doppia collegata, ma
 <mark style="background: #FF5582A6;">Svantaggi:</mark> la visita non termina perchè sono presenti dei cicli.
 
 Un esempio grafico di Lista circolare:
+
 ![[lista_circolare_esempio.png]]
 
 [_Torna all'indice_](#grafi)
@@ -154,6 +159,12 @@ Per evitare di visitare più volte lo stesso nodo, l'algoritmo BFS mantiene un e
 
 L'implementazione dell'algoritmo BFS richiede spazio lineare rispetto alla dimensione del grafo, cioè $O(|V|+|E|)$, dove $|V|$ è il numero di nodi del grafo e $|E|$ è il numero di archi del grafo. Inoltre, il tempo di esecuzione dell'algoritmo BFS è proporzionale al numero di nodi e archi del grafo, cioè $O(|V|+|E|)$.
 
+Pseudocodice:
+
+![[bfs_pseudocode.png]]
+
+Animazione:
+
 ![[bfs_graph.gif]]
 
 [_Torna all'indice_](#grafi)
@@ -172,6 +183,12 @@ L'algoritmo DFS può essere utilizzato per risolvere una varietà di problemi su
 L'implementazione dell'algoritmo DFS richiede spazio lineare rispetto alla dimensione del grafo, cioè $O(|V|+|E|)$. Inoltre, il tempo di esecuzione dell'algoritmo DFS è proporzionale al numero di nodi e archi del grafo, quindi $O(|V|+|E|)$.
 
 L'algoritmo DFS può essere implementato in diversi modi, tra cui il DFS ricorsivo e il DFS iterativo. Il DFS ricorsivo utilizza la ricorsione per implementare la ricerca in profondità, mentre il DFS iterativo utilizza uno stack per implementare la ricerca in profondità in modo iterativo. In generale, il DFS ricorsivo è più facile da implementare e capire, ma può causare problemi di stack overflow su grafi molto grandi. Il DFS iterativo, d'altra parte, è più efficiente e può essere utilizzato per grafi molto grandi.
+
+Pseudocodice:
+
+![[dfs_pseudocode.png]]
+
+Animazione:
 
 ![[dfs_graph.gif]]
 
@@ -203,9 +220,9 @@ Se il nodo di destinazione non è raggiungibile dal nodo di partenza, la coda di
 
 L'algoritmo di Dijkstra ha una complessità computazionale di $O(|E|+|V| \cdot log|V|)$, dove $|E|$ è il numero di archi del grafo e $|V|$ è il numero di nodi del grafo. L'algoritmo è efficiente per grafi con un grande numero di nodi ma un basso numero di archi, ma può diventare inefficiente per grafi con un elevato numero di archi. In questi casi, può essere preferibile utilizzare un algoritmo come l'algoritmo di Bellman-Ford che ha una complessità computazionale peggiore ma che è più adatto per grafi densi.
 
-#todo 
-- [ ] Aggiungere gif Dijkstra
-- [ ] Aggiungere pseudocodice Dijkstra
+Pseudocodice:
+
+![[dijkstra_pseudocode.png]]
 
 [_Torna all'indice_](#grafi)
 
@@ -224,9 +241,9 @@ Se dopo l'ultima iterazione del ciclo, ci sono ancora archi che possono essere r
 
 L'algoritmo di Bellman-Ford ha una complessità computazionale di $O(|E| \cdot |V|)$, dove $|E|$ è il numero di archi del grafo e $|V|$ è il numero di nodi del grafo. L'algoritmo è efficiente per grafi con un basso numero di archi ma un grande numero di nodi, ma diventa meno efficiente per grafi densi. Tuttavia, l'algoritmo di Bellman-Ford è l'unico algoritmo che funziona con grafi che contengono cicli di peso negativo.
 
-#todo 
-- [ ] Aggiungere gif Bellman-Ford
-- [ ] Aggiungere pseudocodice Bellman-Ford
+Pseudocodice:
+
+![[bellman-ford_pseudocode.png]]
 
 [_Torna all'indice_](#grafi)
 
