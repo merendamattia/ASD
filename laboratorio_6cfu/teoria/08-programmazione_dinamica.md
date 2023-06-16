@@ -8,6 +8,8 @@ La programmazione dinamica è una tecnica utilizzata per risolvere problemi comp
 
 L'approccio si basa sull'idea di sfruttare la ricorrenza dei sottoproblemi e di evitare di risolverli ripetutamente, ma piuttosto di memorizzare i loro risultati e riutilizzarli quando necessario.
 
+---
+
 ## Memoization
 La programmazione dinamica è molto importante perché consente di risolvere efficientemente problemi complessi che altrimenti richiederebbero un tempo di esecuzione esponenziale o combinatoriale. Attraverso la scomposizione dei problemi in sottoproblemi più piccoli, la programmazione dinamica permette di ridurre il tempo di esecuzione utilizzando la tecnica del <mark style="background: #BBFABBA6;">*"memoization"*</mark> (ovvero memorizzazione dei risultati dei sottoproblemi) o utilizzando tabelle per memorizzare i risultati intermedi.
 
@@ -22,8 +24,8 @@ Ci sono diversi aspetti chiave che caratterizzano l'approccio della programmazio
 
 ---
 
-## Esempio classico - Fibonacci
-La sequenza di Fibonacci è fatta nel seguente modo:
+### Esempio classico - Fibonacci
+La sequenza di Fibonacci è definita nel seguente modo:
 - $fib(1) = 1$
 - $fib(2) = 1$
 - $fib(3) = fib(2) + fib(1)$
@@ -82,5 +84,24 @@ Questo concetto è utile in diverse situazioni. Ad esempio, può aiutare a corre
 L'algoritmo che calcola la distanza di Levenshtein confronta le lettere delle due parole e calcola il numero minimo di operazioni necessarie per trasformare una parola nell'altra. Può essere calcolato utilizzando una matrice e confrontando i valori nelle posizioni corrispondenti. Alla fine, il valore nella parte inferiore destra della matrice rappresenterà la distanza di Levenshtein tra le due parole.
 
 > Approfondimento su [Wikipedia](https://en.wikipedia.org/wiki/Levenshtein_distance).
+
+[_Torna all'indice_](#Programmazione%20Dinamica)
+
+---
+
+## Needleman-Wunsch
+L'algoritmo Needleman-Wunsch prende il nome dai suoi creatori, Saul B. Needleman e Christian D. Wunsch, che lo hanno introdotto nel 1970. È uno dei primi algoritmi sviluppati per l'allineamento globale di sequenze e ha fornito una base importante per lo sviluppo di altri algoritmi di allineamento.
+
+L'algoritmo Needleman-Wunsch è basato sulla programmazione dinamica, un approccio che scompone un problema complesso in sottoproblemi più piccoli, risolvendoli in modo efficiente e combinando le loro soluzioni per ottenere la soluzione ottimale del problema originale. Questo approccio rende l'algoritmo molto efficiente nell'ottenere l'allineamento globale ottimale tra due sequenze.
+
+La complessità dell'algoritmo Needleman-Wunsch è di $O(m * n)$, dove $m$ e $n$ sono le lunghezze delle due sequenze da allineare. Questo rende l'algoritmo pratico per sequenze di dimensioni ragionevoli. Tuttavia, per sequenze molto lunghe, l'algoritmo può richiedere una quantità significativa di tempo e risorse computazionali.
+
+L'efficienza dell'algoritmo deriva dall'utilizzo della programmazione dinamica e dalla sua capacità di sfruttare le sovrapposizioni tra i sottoproblemi. Calcolando i valori delle celle della matrice di allineamento in modo opportuno, l'algoritmo evita di ricalcolare ripetutamente le stesse sottosequenze. Inoltre, l'algoritmo utilizza una strategia di "bottom-up", riempiendo la matrice di allineamento in un ordine sistematico che assicura la corretta definizione di tutti i sottoproblemi necessari per ottenere l'allineamento globale ottimale.
+
+L'algoritmo Needleman-Wunsch è stato fondamentale nello studio delle sequenze biologiche, come il confronto di sequenze di DNA o proteine. Ha aperto la strada alla scoperta di relazioni evolutive, identificazione di regioni conservate e analisi di similarità tra sequenze. È stato ampiamente utilizzato come base per lo sviluppo di altri algoritmi di allineamento più sofisticati, come l'algoritmo Smith-Waterman per l'allineamento locale di sequenze.
+
+In conclusione, l'algoritmo Needleman-Wunsch è un algoritmo classico di allineamento globale di sequenze basato sulla programmazione dinamica. La sua complessità di tempo è lineare rispetto alla dimensione delle sequenze e la sua efficienza deriva dall'approccio di suddividere il problema complesso in sottoproblemi più piccoli e combinare le soluzioni. Ha avuto un impatto significativo nella bioinformatica e nello studio delle sequenze biologiche.
+
+> Approfondimento su [Wikipedia](https://en.wikipedia.org/wiki/Needleman%E2%80%93Wunsch_algorithm).
 
 [_Torna all'indice_](#Programmazione%20Dinamica)
