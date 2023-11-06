@@ -7,6 +7,17 @@ Guida directory:
 └── prima_parte_9cfu: relativa al corso ASD da 9 cfu.
 ```
 
+## Contributi
+<a href="https://paypal.me/manueldiagostino?country.x=IT&locale.x=it_IT">
+    <img alt="Static Badge" src="https://img.shields.io/badge/%40manueldiagostino-3558C1?style=flat&logo=paypal&link=https%3A%2F%2Fpaypal.me%2Fmanueldiagostino%3Fcountry.x%3DIT%26locale.x%3Dit_IT">
+</a>
+<a href="https://paypal.me/merendasaveriomattia?country.x=IT&locale.x=it_IT">
+    <img alt="Static Badge" src="https://img.shields.io/badge/%40merendamattia-3558C1?style=flat&logo=paypal&link=https%3A%2F%2Fpaypal.me%merendasaveriomattia%3Fcountry.x%3DIT%26locale.x%3Dit_IT">
+</a>
+<a href="https://paypal.me/SimoColli?country.x=IT&locale.x=it_IT">
+    <img alt="Static Badge" src="https://img.shields.io/badge/%40simonecolli-3558C1?style=flat&logo=paypal&link=https%3A%2F%2Fpaypal.me%SimoColli%3Fcountry.x%3DIT%26locale.x%3Dit_IT">
+</a>
+
 # Appunti di ASD - Algoritmi e Strutture Dati
 Benvenuti nella repository degli appunti di "Algoritmi e Strutture Dati". Questa repository è composta da due cartelle che denotano due corsi differenti: uno da 9 cfu chiamato "Algoritmi e Strutture Dati" (più teorico) seguito nel secondo semestre dell'anno accademico 2021/2022 e uno da 6 cfu chiamato "Laboratorio di Algoritmi e Strutture Dati" (più pratico).
 
